@@ -45,8 +45,8 @@ tools/          可重复执行的恢复、分析和装配脚本
 ## 启动流程
 
 1. `src/main.tsx` 加载原样式、KaTeX 和图样式。
-2. `installLocalPreviewNetwork()` 安装请求拦截。
-3. 动态加载恢复的生产主分包。
+2. `/gao-workflow` 动态加载独立的 Gao 静态研究回放，不安装生产请求适配器。
+3. 其他路径安装 `installLocalPreviewNetwork()` 请求拦截并动态加载恢复的生产主分包。
 4. 主分包继续通过兼容导出与已提升源码协同运行。
 
 本地适配器只拦截目标为 `https://app.mathvision.ai/api/v1` 且当前页面运行在本地主机的请求。支持的请求落到 `LocalRepository`；其余请求返回 501。
@@ -76,3 +76,14 @@ tools/          可重复执行的恢复、分析和装配脚本
 - localStorage 仓库只覆盖聊天、文件夹和个人资料等有限对象。
 - Notebook、工作流图和消息数据模型尚未与统一的研究线程对象结合。
 
+## Gao 静态研究回放
+
+`src/showcase/gao/` 是一个独立、只读的产品探针。它把真实 Gao 研究账本整理为线程、事件、状态轴、工件与多来源时间戳，用于检验 MathVision 原工作流面对数百轮研究时的承载能力。
+
+- 入口：`/gao-workflow`；
+- 不读取登录态，不调用生产 API，不写 localStorage；
+- 132 个工作单元来自项目状态账本，P5–P9 与 G02 节点来自审计原件；
+- 720 条压力副本只测试列表密度，永不进入数学分母；
+- 原图的全量布局被阶段聚合、按需展开和分段时间线取代。
+
+这个探针不是完整 ResearchThread 后端，也不能提升 RK Claim。

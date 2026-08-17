@@ -17,6 +17,8 @@
     "src/local/**/*.ts",
     "src/i18n/**/*.ts",
     "src/localPreview.ts",
+    "src/showcase/**/*.ts",
+    "src/showcase/**/*.tsx",
     "src/shared/**/*.ts",
     "src/compat/**/*.ts",
     "tests/**/*.ts"

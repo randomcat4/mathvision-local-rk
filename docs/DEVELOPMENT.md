@@ -37,10 +37,14 @@ npm run verify
 - 视图拆分：恢复视图语法检查 + 行为测试 + 生产构建。
 - 依赖或入口修改：完整 `npm run verify`。
 - RK 协议修改：除完整验证外，还需要版本冲突、结果未知和不可用状态测试。
+- Gao 回放数据或交互修改：`tests/gaoShowcase.test.ts` + 类型检查 + 生产构建 + Chrome 桌面视口验收。
+
+## Gao 回放
+
+启动本地预览后访问 `http://127.0.0.1:4173/gao-workflow`。该页面不依赖登录态。更新数据时必须同时核对 Gao 外置状态、审计原件和 GitHub 提交时间，并保持“原始证据 / 账本重建 / 压力副本”三类分母分离。
 
 ## 文档同步
 
 - 已实现架构变化更新 `ARCHITECTURE.md`、`LOCAL_API.md` 或 `DATA_MODEL.md`。
 - 目标变化更新 `PROJECT.md`、`RK_INTEGRATION.md` 和 `ROADMAP.md`。
 - 恢复分母变化更新根目录 `RECOVERY_STATUS.md` 及对应机器报告。
-
