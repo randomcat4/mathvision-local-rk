@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": false,
+    "strict": true,
+    "paths": {
+      "#production-react": ["node_modules/@types/react/index.d.ts"]
+    },
+    "types": ["node"]
+  },
+  "include": [
+    "src/api/**/*.ts",
+    "src/api/**/*.tsx",
+    "src/domain/**/*.ts",
+    "src/features/**/*.ts",
+    "src/features/**/*.tsx",
+    "src/local/**/*.ts",
+    "src/i18n/**/*.ts",
+    "src/localPreview.ts",
+    "src/shared/**/*.ts",
+    "src/compat/**/*.ts",
+    "tests/**/*.ts"
+  ]
+}

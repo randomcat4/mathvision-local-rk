@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false,
+    "strict": false,
+    "noCheck": true,
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/chunks/UserMessage-DN7iPijg.tsx",
+    "src/chunks/DeferredThreadMessageList-BRB1t-55.tsx",
+    "src/chunks/NotebookWorkspaceContent-Cmckz3Qo.tsx",
+    "src/chunks/WorkspaceExplorer-BkU1kYog.tsx",
+    "src/chunks/_problemId.lazy-1puKhYPi.tsx",
+    "src/chunks/public---7j118Y.tsx",
+    "src/chunks/route.lazy-B7bltzFg.tsx"
+    ,"src/vendor/recovered/**/*.tsx"
+    ,"src/recovered/notebooks/**/*.ts"
+    ,"src/recovered/chat/**/*.tsx"
+  ]
+}

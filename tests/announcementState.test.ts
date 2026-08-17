@@ -1,0 +1,8 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { dismissalOutboxKey, isRecentAnnouncement, readAnnouncementIds, resolveAnnouncementAssetUrl, rewriteAnnouncementMarkdownUrls, writeAnnouncementIds } from "../src/features/announcements/announcementState";
+
+function memoryStorage(initial: Record<string, string> = {}) { const values = new Map(Object.entries(initial)); return { getItem: (key: string) => values.get(key) ?? null, setItem: (key: string, value: string) => { values.set(key, value); }, removeItem: (key: string) => { values.delete(key); }, values }; }
+test("recovers and cleans announcement dismissal ids", () => { const storage = memoryStorage({ state: JSON.stringify(["123e4567-e89b-12d3-a456-426614174000", "bad", "123e4567-e89b-12d3-a456-426614174000"]) }); assert.deepEqual(readAnnouncementIds(storage, "state", "state", () => {}), ["123e4567-e89b-12d3-a456-426614174000"]); assert.equal(storage.values.get("state"), JSON.stringify(["123e4567-e89b-12d3-a456-426614174000"])); });
+test("removes empty state and namespaces the outbox", () => { const storage = memoryStorage({ state: "[]" }); writeAnnouncementIds(storage, "state", []); assert.equal(storage.values.has("state"), false); assert.equal(dismissalOutboxKey("a/b"), "ai-math.feature-announcement-dismissal-outbox.v1:a%2Fb"); });
+test("keeps the production seven-day window and URL rewrite", () => { const now = Date.parse("2026-08-17T00:00:00Z"); assert.equal(isRecentAnnouncement("2026-08-10T00:00:00Z", now), true); assert.equal(resolveAnnouncementAssetUrl("/api/x"), "https://app.mathvision.ai/api/x"); assert.equal(rewriteAnnouncementMarkdownUrls("[x](/api/x)"), "[x](https://app.mathvision.ai/api/x)"); });

@@ -1,0 +1,1424 @@
+{
+  "sourceRoot": "C:\\game\\ai4math\\mvref01\\raw\\assets",
+  "outputRoot": "C:\\game\\ai4math\\mvsrc01\\recovered\\chunks",
+  "files": [
+    {
+      "name": "AccessStatusPage-BWPFK5HR.js",
+      "action": "formatted-javascript",
+      "inputBytes": 5674,
+      "outputBytes": 9042
+    },
+    {
+      "name": "AgentExecutionResult-MyNStJTJ.js",
+      "action": "formatted-javascript",
+      "inputBytes": 6073,
+      "outputBytes": 10206
+    },
+    {
+      "name": "AgentTaskProgress-bXMst_Kr.js",
+      "action": "formatted-javascript",
+      "inputBytes": 28051,
+      "outputBytes": 49302
+    },
+    {
+      "name": "Alert-DnFVD8li.js",
+      "action": "formatted-javascript",
+      "inputBytes": 4624,
+      "outputBytes": 7044
+    },
+    {
+      "name": "AlertTitle-B2wnIUF2.js",
+      "action": "formatted-javascript",
+      "inputBytes": 572,
+      "outputBytes": 798
+    },
+    {
+      "name": "AssistantMessageMetadata-BCGLTOhc.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1295,
+      "outputBytes": 2015
+    },
+    {
+      "name": "AssistantStructuredResponse-CZDMu2rs.js",
+      "action": "formatted-javascript",
+      "inputBytes": 20964,
+      "outputBytes": 33499
+    },
+    {
+      "name": "AttachmentFileName-BwwbwxPg.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1330,
+      "outputBytes": 1705
+    },
+    {
+      "name": "AutoAwesomeRounded-DwWNeeYP.js",
+      "action": "formatted-javascript",
+      "inputBytes": 579,
+      "outputBytes": 608
+    },
+    {
+      "name": "Badge-b-klHfWK.js",
+      "action": "formatted-javascript",
+      "inputBytes": 4423,
+      "outputBytes": 6556
+    },
+    {
+      "name": "Card-Bf0WPnf4.js",
+      "action": "formatted-javascript",
+      "inputBytes": 501,
+      "outputBytes": 712
+    },
+    {
+      "name": "ChatInteractionOverrides-dyfOoEnd.js",
+      "action": "formatted-javascript",
+      "inputBytes": 189,
+      "outputBytes": 233
+    },
+    {
+      "name": "ChatPanelMoreMenu-B1X9SOWN.js",
+      "action": "formatted-javascript",
+      "inputBytes": 400182,
+      "outputBytes": 638424
+    },
+    {
+      "name": "ChatPanelMoreMenuContent-D1GGdgpe.js",
+      "action": "formatted-javascript",
+      "inputBytes": 5449,
+      "outputBytes": 7109
+    },
+    {
+      "name": "ComposerAttachmentCard-BVMHeN2h.js",
+      "action": "formatted-javascript",
+      "inputBytes": 3150,
+      "outputBytes": 4822
+    },
+    {
+      "name": "ComposerAttachmentCards-CNJKQcrr.js",
+      "action": "formatted-javascript",
+      "inputBytes": 718,
+      "outputBytes": 903
+    },
+    {
+      "name": "ComposerQuote-2g1HGk7u.js",
+      "action": "formatted-javascript",
+      "inputBytes": 564,
+      "outputBytes": 658
+    },
+    {
+      "name": "ComputeStructuredSection-C40NdNj6.js",
+      "action": "formatted-javascript",
+      "inputBytes": 6698,
+      "outputBytes": 10048
+    },
+    {
+      "name": "Container-C988byeG.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1962,
+      "outputBytes": 2944
+    },
+    {
+      "name": "CopyButton-BcOsqrNJ.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1621,
+      "outputBytes": 2453
+    },
+    {
+      "name": "DebouncedTextField-DEJkKI5N.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1567,
+      "outputBytes": 2106
+    },
+    {
+      "name": "DeferredThreadMessageList-BRB1t-55.js",
+      "action": "formatted-javascript",
+      "inputBytes": 29018,
+      "outputBytes": 49173
+    },
+    {
+      "name": "Divider-BcuihGce.js",
+      "action": "formatted-javascript",
+      "inputBytes": 3382,
+      "outputBytes": 5359
+    },
+    {
+      "name": "Drawer-ByPJ5WV0.js",
+      "action": "formatted-javascript",
+      "inputBytes": 6231,
+      "outputBytes": 9155
+    },
+    {
+      "name": "FloatingFeatureAnnouncements-BUSQvA1p.js",
+      "action": "formatted-javascript",
+      "inputBytes": 8787,
+      "outputBytes": 14226
+    },
+    {
+      "name": "FormControlLabel-CQvCddOM.js",
+      "action": "formatted-javascript",
+      "inputBytes": 4955,
+      "outputBytes": 7799
+    },
+    {
+      "name": "FormGroup-BsLWbxpH.js",
+      "action": "formatted-javascript",
+      "inputBytes": 3469,
+      "outputBytes": 5178
+    },
+    {
+      "name": "GeneratedArtifactContent-DZ9NE8JY.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1479,
+      "outputBytes": 2720
+    },
+    {
+      "name": "KaTeX_AMS-Regular-BQhdFMY1.woff2",
+      "action": "copied",
+      "inputBytes": 28076,
+      "outputBytes": 28076
+    },
+    {
+      "name": "KaTeX_AMS-Regular-DMm9YOAa.woff",
+      "action": "copied",
+      "inputBytes": 33516,
+      "outputBytes": 33516
+    },
+    {
+      "name": "KaTeX_AMS-Regular-DRggAlZN.ttf",
+      "action": "copied",
+      "inputBytes": 63632,
+      "outputBytes": 63632
+    },
+    {
+      "name": "KaTeX_Caligraphic-Bold-ATXxdsX0.ttf",
+      "action": "copied",
+      "inputBytes": 12368,
+      "outputBytes": 12368
+    },
+    {
+      "name": "KaTeX_Caligraphic-Bold-BEiXGLvX.woff",
+      "action": "copied",
+      "inputBytes": 7716,
+      "outputBytes": 7716
+    },
+    {
+      "name": "KaTeX_Caligraphic-Bold-Dq_IR9rO.woff2",
+      "action": "copied",
+      "inputBytes": 6912,
+      "outputBytes": 6912
+    },
+    {
+      "name": "KaTeX_Caligraphic-Regular-CTRA-rTL.woff",
+      "action": "copied",
+      "inputBytes": 7656,
+      "outputBytes": 7656
+    },
+    {
+      "name": "KaTeX_Caligraphic-Regular-Di6jR-x-.woff2",
+      "action": "copied",
+      "inputBytes": 6908,
+      "outputBytes": 6908
+    },
+    {
+      "name": "KaTeX_Caligraphic-Regular-wX97UBjC.ttf",
+      "action": "copied",
+      "inputBytes": 12344,
+      "outputBytes": 12344
+    },
+    {
+      "name": "KaTeX_Fraktur-Bold-BdnERNNW.ttf",
+      "action": "copied",
+      "inputBytes": 19584,
+      "outputBytes": 19584
+    },
+    {
+      "name": "KaTeX_Fraktur-Bold-BsDP51OF.woff",
+      "action": "copied",
+      "inputBytes": 13296,
+      "outputBytes": 13296
+    },
+    {
+      "name": "KaTeX_Fraktur-Bold-CL6g_b3V.woff2",
+      "action": "copied",
+      "inputBytes": 11348,
+      "outputBytes": 11348
+    },
+    {
+      "name": "KaTeX_Fraktur-Regular-CB_wures.ttf",
+      "action": "copied",
+      "inputBytes": 19572,
+      "outputBytes": 19572
+    },
+    {
+      "name": "KaTeX_Fraktur-Regular-CTYiF6lA.woff2",
+      "action": "copied",
+      "inputBytes": 11316,
+      "outputBytes": 11316
+    },
+    {
+      "name": "KaTeX_Fraktur-Regular-Dxdc4cR9.woff",
+      "action": "copied",
+      "inputBytes": 13208,
+      "outputBytes": 13208
+    },
+    {
+      "name": "KaTeX_Main-Bold-Cx986IdX.woff2",
+      "action": "copied",
+      "inputBytes": 25324,
+      "outputBytes": 25324
+    },
+    {
+      "name": "KaTeX_Main-Bold-Jm3AIy58.woff",
+      "action": "copied",
+      "inputBytes": 29912,
+      "outputBytes": 29912
+    },
+    {
+      "name": "KaTeX_Main-Bold-waoOVXN0.ttf",
+      "action": "copied",
+      "inputBytes": 51336,
+      "outputBytes": 51336
+    },
+    {
+      "name": "KaTeX_Main-BoldItalic-DxDJ3AOS.woff2",
+      "action": "copied",
+      "inputBytes": 16780,
+      "outputBytes": 16780
+    },
+    {
+      "name": "KaTeX_Main-BoldItalic-DzxPMmG6.ttf",
+      "action": "copied",
+      "inputBytes": 32968,
+      "outputBytes": 32968
+    },
+    {
+      "name": "KaTeX_Main-BoldItalic-SpSLRI95.woff",
+      "action": "copied",
+      "inputBytes": 19412,
+      "outputBytes": 19412
+    },
+    {
+      "name": "KaTeX_Main-Italic-3WenGoN9.ttf",
+      "action": "copied",
+      "inputBytes": 33580,
+      "outputBytes": 33580
+    },
+    {
+      "name": "KaTeX_Main-Italic-BMLOBm91.woff",
+      "action": "copied",
+      "inputBytes": 19676,
+      "outputBytes": 19676
+    },
+    {
+      "name": "KaTeX_Main-Italic-NWA7e6Wa.woff2",
+      "action": "copied",
+      "inputBytes": 16988,
+      "outputBytes": 16988
+    },
+    {
+      "name": "KaTeX_Main-Regular-B22Nviop.woff2",
+      "action": "copied",
+      "inputBytes": 26272,
+      "outputBytes": 26272
+    },
+    {
+      "name": "KaTeX_Main-Regular-Dr94JaBh.woff",
+      "action": "copied",
+      "inputBytes": 30772,
+      "outputBytes": 30772
+    },
+    {
+      "name": "KaTeX_Main-Regular-ypZvNtVU.ttf",
+      "action": "copied",
+      "inputBytes": 53580,
+      "outputBytes": 53580
+    },
+    {
+      "name": "KaTeX_Math-BoldItalic-B3XSjfu4.ttf",
+      "action": "copied",
+      "inputBytes": 31196,
+      "outputBytes": 31196
+    },
+    {
+      "name": "KaTeX_Math-BoldItalic-CZnvNsCZ.woff2",
+      "action": "copied",
+      "inputBytes": 16400,
+      "outputBytes": 16400
+    },
+    {
+      "name": "KaTeX_Math-BoldItalic-iY-2wyZ7.woff",
+      "action": "copied",
+      "inputBytes": 18668,
+      "outputBytes": 18668
+    },
+    {
+      "name": "KaTeX_Math-Italic-DA0__PXp.woff",
+      "action": "copied",
+      "inputBytes": 18748,
+      "outputBytes": 18748
+    },
+    {
+      "name": "KaTeX_Math-Italic-flOr_0UB.ttf",
+      "action": "copied",
+      "inputBytes": 31308,
+      "outputBytes": 31308
+    },
+    {
+      "name": "KaTeX_Math-Italic-t53AETM-.woff2",
+      "action": "copied",
+      "inputBytes": 16440,
+      "outputBytes": 16440
+    },
+    {
+      "name": "KaTeX_SansSerif-Bold-CFMepnvq.ttf",
+      "action": "copied",
+      "inputBytes": 24504,
+      "outputBytes": 24504
+    },
+    {
+      "name": "KaTeX_SansSerif-Bold-D1sUS0GD.woff2",
+      "action": "copied",
+      "inputBytes": 12216,
+      "outputBytes": 12216
+    },
+    {
+      "name": "KaTeX_SansSerif-Bold-DbIhKOiC.woff",
+      "action": "copied",
+      "inputBytes": 14408,
+      "outputBytes": 14408
+    },
+    {
+      "name": "KaTeX_SansSerif-Italic-C3H0VqGB.woff2",
+      "action": "copied",
+      "inputBytes": 12028,
+      "outputBytes": 12028
+    },
+    {
+      "name": "KaTeX_SansSerif-Italic-DN2j7dab.woff",
+      "action": "copied",
+      "inputBytes": 14112,
+      "outputBytes": 14112
+    },
+    {
+      "name": "KaTeX_SansSerif-Italic-YYjJ1zSn.ttf",
+      "action": "copied",
+      "inputBytes": 22364,
+      "outputBytes": 22364
+    },
+    {
+      "name": "KaTeX_SansSerif-Regular-BNo7hRIc.ttf",
+      "action": "copied",
+      "inputBytes": 19436,
+      "outputBytes": 19436
+    },
+    {
+      "name": "KaTeX_SansSerif-Regular-CS6fqUqJ.woff",
+      "action": "copied",
+      "inputBytes": 12316,
+      "outputBytes": 12316
+    },
+    {
+      "name": "KaTeX_SansSerif-Regular-DDBCnlJ7.woff2",
+      "action": "copied",
+      "inputBytes": 10344,
+      "outputBytes": 10344
+    },
+    {
+      "name": "KaTeX_Script-Regular-C5JkGWo-.ttf",
+      "action": "copied",
+      "inputBytes": 16648,
+      "outputBytes": 16648
+    },
+    {
+      "name": "KaTeX_Script-Regular-D3wIWfF6.woff2",
+      "action": "copied",
+      "inputBytes": 9644,
+      "outputBytes": 9644
+    },
+    {
+      "name": "KaTeX_Script-Regular-D5yQViql.woff",
+      "action": "copied",
+      "inputBytes": 10588,
+      "outputBytes": 10588
+    },
+    {
+      "name": "KaTeX_Size1-Regular-C195tn64.woff",
+      "action": "copied",
+      "inputBytes": 6496,
+      "outputBytes": 6496
+    },
+    {
+      "name": "KaTeX_Size1-Regular-Dbsnue_I.ttf",
+      "action": "copied",
+      "inputBytes": 12228,
+      "outputBytes": 12228
+    },
+    {
+      "name": "KaTeX_Size1-Regular-mCD8mA8B.woff2",
+      "action": "copied",
+      "inputBytes": 5468,
+      "outputBytes": 5468
+    },
+    {
+      "name": "KaTeX_Size2-Regular-B7gKUWhC.ttf",
+      "action": "copied",
+      "inputBytes": 11508,
+      "outputBytes": 11508
+    },
+    {
+      "name": "KaTeX_Size2-Regular-Dy4dx90m.woff2",
+      "action": "copied",
+      "inputBytes": 5208,
+      "outputBytes": 5208
+    },
+    {
+      "name": "KaTeX_Size2-Regular-oD1tc_U0.woff",
+      "action": "copied",
+      "inputBytes": 6188,
+      "outputBytes": 6188
+    },
+    {
+      "name": "KaTeX_Size3-Regular-CTq5MqoE.woff",
+      "action": "copied",
+      "inputBytes": 4420,
+      "outputBytes": 4420
+    },
+    {
+      "name": "KaTeX_Size3-Regular-DgpXs0kz.ttf",
+      "action": "copied",
+      "inputBytes": 7588,
+      "outputBytes": 7588
+    },
+    {
+      "name": "KaTeX_Size4-Regular-BF-4gkZK.woff",
+      "action": "copied",
+      "inputBytes": 5980,
+      "outputBytes": 5980
+    },
+    {
+      "name": "KaTeX_Size4-Regular-DWFBv043.ttf",
+      "action": "copied",
+      "inputBytes": 10364,
+      "outputBytes": 10364
+    },
+    {
+      "name": "KaTeX_Size4-Regular-Dl5lxZxV.woff2",
+      "action": "copied",
+      "inputBytes": 4928,
+      "outputBytes": 4928
+    },
+    {
+      "name": "KaTeX_Typewriter-Regular-C0xS9mPB.woff",
+      "action": "copied",
+      "inputBytes": 16028,
+      "outputBytes": 16028
+    },
+    {
+      "name": "KaTeX_Typewriter-Regular-CO6r4hn1.woff2",
+      "action": "copied",
+      "inputBytes": 13568,
+      "outputBytes": 13568
+    },
+    {
+      "name": "KaTeX_Typewriter-Regular-D3Ib7_Hf.ttf",
+      "action": "copied",
+      "inputBytes": 27556,
+      "outputBytes": 27556
+    },
+    {
+      "name": "LatexAttachmentPreviewDrawer-DQLImhiz.js",
+      "action": "formatted-javascript",
+      "inputBytes": 3113,
+      "outputBytes": 5520
+    },
+    {
+      "name": "LatexDocumentCreateDrawer-Urvzcv4B.js",
+      "action": "formatted-javascript",
+      "inputBytes": 9154,
+      "outputBytes": 15144
+    },
+    {
+      "name": "LatexDocumentSelector-CsoCVGim.js",
+      "action": "formatted-javascript",
+      "inputBytes": 8520,
+      "outputBytes": 12605
+    },
+    {
+      "name": "LatexProjectChatPanel-DKAp7Vbq.js",
+      "action": "formatted-javascript",
+      "inputBytes": 12736,
+      "outputBytes": 20746
+    },
+    {
+      "name": "LatexProjectFolderExpansionContext-DKFyp-6E.js",
+      "action": "formatted-javascript",
+      "inputBytes": 13776,
+      "outputBytes": 22205
+    },
+    {
+      "name": "LatexWorkspaceCanvas-D7OCDecY.css",
+      "action": "formatted-css",
+      "inputBytes": 111787,
+      "outputBytes": 128204
+    },
+    {
+      "name": "LatexWorkspaceCanvas-DKG1oD4d.js",
+      "action": "formatted-javascript",
+      "inputBytes": 105443,
+      "outputBytes": 182580
+    },
+    {
+      "name": "LinkOffRounded-CKGtm4_4.js",
+      "action": "formatted-javascript",
+      "inputBytes": 940,
+      "outputBytes": 1007
+    },
+    {
+      "name": "ListItemIcon-CaLBil7Q.js",
+      "action": "formatted-javascript",
+      "inputBytes": 795,
+      "outputBytes": 1089
+    },
+    {
+      "name": "ListItemText-CBxudZz_.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1784,
+      "outputBytes": 2789
+    },
+    {
+      "name": "LoadingSection-wWBu2CqJ.js",
+      "action": "formatted-javascript",
+      "inputBytes": 6063,
+      "outputBytes": 8675
+    },
+    {
+      "name": "LogoutRounded-BsETu1qq.js",
+      "action": "formatted-javascript",
+      "inputBytes": 358,
+      "outputBytes": 445
+    },
+    {
+      "name": "MChip-DiH8NXBU.js",
+      "action": "formatted-javascript",
+      "inputBytes": 15487,
+      "outputBytes": 24208
+    },
+    {
+      "name": "Markdown-Dh8LhaRc.js",
+      "action": "formatted-javascript",
+      "inputBytes": 60795,
+      "outputBytes": 88375
+    },
+    {
+      "name": "MarkdownHighlights-C-ZhT8z1.js",
+      "action": "formatted-javascript",
+      "inputBytes": 308605,
+      "outputBytes": 441268
+    },
+    {
+      "name": "MathSceneThreeViewport-DhqPyZj9.js",
+      "action": "formatted-javascript",
+      "inputBytes": 939083,
+      "outputBytes": 1408370
+    },
+    {
+      "name": "MessageAttachments-nUg1LIry.js",
+      "action": "formatted-javascript",
+      "inputBytes": 6066,
+      "outputBytes": 10223
+    },
+    {
+      "name": "MessageBubble-DqxHrk03.js",
+      "action": "formatted-javascript",
+      "inputBytes": 13239,
+      "outputBytes": 20445
+    },
+    {
+      "name": "NextStepsResponse-NcFjw3w7.js",
+      "action": "formatted-javascript",
+      "inputBytes": 13881,
+      "outputBytes": 27249
+    },
+    {
+      "name": "NotebookWorkspaceContent-Cmckz3Qo.js",
+      "action": "formatted-javascript",
+      "inputBytes": 39917,
+      "outputBytes": 64616
+    },
+    {
+      "name": "OpenInNewRounded-D-7V5TzF.js",
+      "action": "formatted-javascript",
+      "inputBytes": 7201,
+      "outputBytes": 10807
+    },
+    {
+      "name": "PdfCanvasViewer-jW4Ex2Pm.js",
+      "action": "formatted-javascript",
+      "inputBytes": 2731,
+      "outputBytes": 4147
+    },
+    {
+      "name": "PdfCanvasViewerControls-CKiN42mP.js",
+      "action": "formatted-javascript",
+      "inputBytes": 2686,
+      "outputBytes": 4727
+    },
+    {
+      "name": "PdfContinuousCanvasViewer-CbJuZJkv.js",
+      "action": "formatted-javascript",
+      "inputBytes": 3943,
+      "outputBytes": 6662
+    },
+    {
+      "name": "PersonalizationDialog-SAjscOQ8.js",
+      "action": "formatted-javascript",
+      "inputBytes": 2600,
+      "outputBytes": 3760
+    },
+    {
+      "name": "ProChatCallGraphDialog-BIa-XWUO.js",
+      "action": "formatted-javascript",
+      "inputBytes": 16551,
+      "outputBytes": 26324
+    },
+    {
+      "name": "QuotedSelection-JUU54BvY.js",
+      "action": "formatted-javascript",
+      "inputBytes": 2511,
+      "outputBytes": 3731
+    },
+    {
+      "name": "RadioGroup-CvCoRbaB.js",
+      "action": "formatted-javascript",
+      "inputBytes": 4762,
+      "outputBytes": 7212
+    },
+    {
+      "name": "ReportFeedbackDialog-DzymJyQD.js",
+      "action": "formatted-javascript",
+      "inputBytes": 2583,
+      "outputBytes": 4600
+    },
+    {
+      "name": "ResearchProblemsContext-D2iMu4To.js",
+      "action": "formatted-javascript",
+      "inputBytes": 3529,
+      "outputBytes": 4742
+    },
+    {
+      "name": "SidebarTreeConnector-DsRNfBIo.js",
+      "action": "formatted-javascript",
+      "inputBytes": 22362,
+      "outputBytes": 32337
+    },
+    {
+      "name": "Slider-v2yN6a4G.js",
+      "action": "formatted-javascript",
+      "inputBytes": 20208,
+      "outputBytes": 33161
+    },
+    {
+      "name": "StructuredMarkdown-DAWLLRpf.js",
+      "action": "formatted-javascript",
+      "inputBytes": 2953,
+      "outputBytes": 4564
+    },
+    {
+      "name": "SupportingArtifactCard-B1XjYGZI.js",
+      "action": "formatted-javascript",
+      "inputBytes": 72079,
+      "outputBytes": 105302
+    },
+    {
+      "name": "TextField-D8vc_sXz.js",
+      "action": "formatted-javascript",
+      "inputBytes": 65159,
+      "outputBytes": 103070
+    },
+    {
+      "name": "ThinkingElapsedLabel-DKCKD95O.js",
+      "action": "formatted-javascript",
+      "inputBytes": 12690,
+      "outputBytes": 16206
+    },
+    {
+      "name": "ThreadPendingAssistantMessage-SEoTs7JJ.js",
+      "action": "formatted-javascript",
+      "inputBytes": 12944,
+      "outputBytes": 19935
+    },
+    {
+      "name": "ThreadTour-1OvtQgmE.js",
+      "action": "formatted-javascript",
+      "inputBytes": 94160,
+      "outputBytes": 143811
+    },
+    {
+      "name": "TimeRelative-HYP_-RcH.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1609,
+      "outputBytes": 2396
+    },
+    {
+      "name": "UserMessage-DN7iPijg.js",
+      "action": "formatted-javascript",
+      "inputBytes": 34908,
+      "outputBytes": 58921
+    },
+    {
+      "name": "ViewportVisualizationFigure-BIlJdDlH.js",
+      "action": "formatted-javascript",
+      "inputBytes": 629269,
+      "outputBytes": 949876
+    },
+    {
+      "name": "VisualizationStructuredSection-BK_R26-B.js",
+      "action": "formatted-javascript",
+      "inputBytes": 2059,
+      "outputBytes": 2225
+    },
+    {
+      "name": "WorkspaceExplorer-BkU1kYog.js",
+      "action": "formatted-javascript",
+      "inputBytes": 23922,
+      "outputBytes": 40033
+    },
+    {
+      "name": "WorkspaceSidePanelFrame-BElEFQhq.js",
+      "action": "formatted-javascript",
+      "inputBytes": 45718,
+      "outputBytes": 77754
+    },
+    {
+      "name": "WriteupDisplayControls-E0ZIJhIu.js",
+      "action": "formatted-javascript",
+      "inputBytes": 3015,
+      "outputBytes": 4595
+    },
+    {
+      "name": "WriteupStructuredResponsePanel-CPg9TOt6.js",
+      "action": "formatted-javascript",
+      "inputBytes": 12744,
+      "outputBytes": 19539
+    },
+    {
+      "name": "_chatId-BHWou8be.js",
+      "action": "formatted-javascript",
+      "inputBytes": 5565,
+      "outputBytes": 9012
+    },
+    {
+      "name": "_notebookId.lazy-BI_anWol.js",
+      "action": "formatted-javascript",
+      "inputBytes": 118,
+      "outputBytes": 135
+    },
+    {
+      "name": "_problemId.lazy-1puKhYPi.js",
+      "action": "formatted-javascript",
+      "inputBytes": 20959,
+      "outputBytes": 31454
+    },
+    {
+      "name": "accept-2s0vxcCe.js",
+      "action": "formatted-javascript",
+      "inputBytes": 3204,
+      "outputBytes": 6233
+    },
+    {
+      "name": "account-disabled-CVRHuqTs.js",
+      "action": "formatted-javascript",
+      "inputBytes": 547,
+      "outputBytes": 609
+    },
+    {
+      "name": "arrow-right-DvMAP92m.js",
+      "action": "formatted-javascript",
+      "inputBytes": 337,
+      "outputBytes": 382
+    },
+    {
+      "name": "assistantStructuredResponseLazy-CCAemx3W.js",
+      "action": "formatted-javascript",
+      "inputBytes": 27398,
+      "outputBytes": 42596
+    },
+    {
+      "name": "attachmentsApi-BHgxfYft.js",
+      "action": "formatted-javascript",
+      "inputBytes": 2230,
+      "outputBytes": 2865
+    },
+    {
+      "name": "authFetch-DXjDztUP.js",
+      "action": "formatted-javascript",
+      "inputBytes": 505,
+      "outputBytes": 624
+    },
+    {
+      "name": "cache-BNzcfneg.js",
+      "action": "formatted-javascript",
+      "inputBytes": 4386,
+      "outputBytes": 6865
+    },
+    {
+      "name": "chatMessageSelectors-CRUAC26Y.js",
+      "action": "formatted-javascript",
+      "inputBytes": 596,
+      "outputBytes": 893
+    },
+    {
+      "name": "chatQueryCache-DOdNJrP_.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1946,
+      "outputBytes": 2737
+    },
+    {
+      "name": "chatRoutePrefetch-DY5QqBEK.js",
+      "action": "formatted-javascript",
+      "inputBytes": 618,
+      "outputBytes": 728
+    },
+    {
+      "name": "chatsApi-Ck-JYICO.js",
+      "action": "formatted-javascript",
+      "inputBytes": 17801,
+      "outputBytes": 23278
+    },
+    {
+      "name": "chevron-left-BwEFN4zp.js",
+      "action": "formatted-javascript",
+      "inputBytes": 302,
+      "outputBytes": 327
+    },
+    {
+      "name": "circle-DSozMRKK.js",
+      "action": "formatted-javascript",
+      "inputBytes": 302,
+      "outputBytes": 331
+    },
+    {
+      "name": "circle-check-B9fquZbm.js",
+      "action": "formatted-javascript",
+      "inputBytes": 350,
+      "outputBytes": 399
+    },
+    {
+      "name": "circle-check-big-D9HEGJKD.js",
+      "action": "formatted-javascript",
+      "inputBytes": 366,
+      "outputBytes": 411
+    },
+    {
+      "name": "code-xml-DmfSENe3.js",
+      "action": "formatted-javascript",
+      "inputBytes": 380,
+      "outputBytes": 436
+    },
+    {
+      "name": "cursor-editorTextHighlight-kG3uUOwL.svg",
+      "action": "copied",
+      "inputBytes": 5402,
+      "outputBytes": 5402
+    },
+    {
+      "name": "cytoscape.esm-C3TgQFLq.js",
+      "action": "formatted-javascript",
+      "inputBytes": 443728,
+      "outputBytes": 699841
+    },
+    {
+      "name": "dialogs-D-Okwmpa.js",
+      "action": "formatted-javascript",
+      "inputBytes": 8066,
+      "outputBytes": 11996
+    },
+    {
+      "name": "documents-DhCTfQKt.js",
+      "action": "formatted-javascript",
+      "inputBytes": 87467,
+      "outputBytes": 88431
+    },
+    {
+      "name": "downloadBlob-CusuPFei.js",
+      "action": "formatted-javascript",
+      "inputBytes": 209,
+      "outputBytes": 273
+    },
+    {
+      "name": "editor-CpCBfeW4.js",
+      "action": "formatted-javascript",
+      "inputBytes": 107589,
+      "outputBytes": 176898
+    },
+    {
+      "name": "eraser-B4pclN2p.js",
+      "action": "formatted-javascript",
+      "inputBytes": 454,
+      "outputBytes": 541
+    },
+    {
+      "name": "file-code-corner-DV79SyC0.js",
+      "action": "formatted-javascript",
+      "inputBytes": 532,
+      "outputBytes": 641
+    },
+    {
+      "name": "file-input-BGVdGffy.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1054,
+      "outputBytes": 1268
+    },
+    {
+      "name": "file-plus-_oOf3yl8.js",
+      "action": "formatted-javascript",
+      "inputBytes": 521,
+      "outputBytes": 630
+    },
+    {
+      "name": "file-plus-corner-CfeYwU0X.js",
+      "action": "formatted-javascript",
+      "inputBytes": 521,
+      "outputBytes": 630
+    },
+    {
+      "name": "graphDialogStyles-BtRC286U.js",
+      "action": "formatted-javascript",
+      "inputBytes": 234822,
+      "outputBytes": 358377
+    },
+    {
+      "name": "graphDialogStyles-C5ap-Sga.css",
+      "action": "formatted-css",
+      "inputBytes": 15869,
+      "outputBytes": 17765
+    },
+    {
+      "name": "grip-vertical-DCI0_0hx.js",
+      "action": "formatted-javascript",
+      "inputBytes": 543,
+      "outputBytes": 656
+    },
+    {
+      "name": "history-7HBMn_Gr.js",
+      "action": "formatted-javascript",
+      "inputBytes": 409,
+      "outputBytes": 465
+    },
+    {
+      "name": "index-BM3ZINIl.js",
+      "action": "formatted-javascript",
+      "inputBytes": 726168,
+      "outputBytes": 1139973
+    },
+    {
+      "name": "index-D0EP5Hzg.js",
+      "action": "formatted-javascript",
+      "inputBytes": 23604,
+      "outputBytes": 38563
+    },
+    {
+      "name": "index-DCmpUGyQ.css",
+      "action": "formatted-css",
+      "inputBytes": 150,
+      "outputBytes": 183
+    },
+    {
+      "name": "index-DzMT-bSF.js",
+      "action": "formatted-javascript",
+      "inputBytes": 98235,
+      "outputBytes": 144281
+    },
+    {
+      "name": "index-Yb6ONXKu.js",
+      "action": "formatted-javascript",
+      "inputBytes": 19795,
+      "outputBytes": 28848
+    },
+    {
+      "name": "index-u5-SH7k2.css",
+      "action": "formatted-css",
+      "inputBytes": 191452,
+      "outputBytes": 210404
+    },
+    {
+      "name": "index.esm-BvmNW6jF.js",
+      "action": "formatted-javascript",
+      "inputBytes": 31042,
+      "outputBytes": 49758
+    },
+    {
+      "name": "index.lazy-CeqeR69n.js",
+      "action": "formatted-javascript",
+      "inputBytes": 908589,
+      "outputBytes": 1304540
+    },
+    {
+      "name": "index.lazy-xRSdo-0_.js",
+      "action": "formatted-javascript",
+      "inputBytes": 107,
+      "outputBytes": 124
+    },
+    {
+      "name": "katex-CfVKi3_s.css",
+      "action": "formatted-css",
+      "inputBytes": 29265,
+      "outputBytes": 32646
+    },
+    {
+      "name": "katex.min-ADdKj7O-.js",
+      "action": "formatted-javascript",
+      "inputBytes": 404,
+      "outputBytes": 460
+    },
+    {
+      "name": "latexAttachment-C8umpCPo.js",
+      "action": "formatted-javascript",
+      "inputBytes": 226,
+      "outputBytes": 292
+    },
+    {
+      "name": "latexAttachmentPreviewLazy-DKgWJirC.js",
+      "action": "formatted-javascript",
+      "inputBytes": 846,
+      "outputBytes": 1050
+    },
+    {
+      "name": "latexNaming-BAjxoZ-G.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1332,
+      "outputBytes": 1729
+    },
+    {
+      "name": "latexPreview-B9IEPCtV.js",
+      "action": "formatted-javascript",
+      "inputBytes": 3131,
+      "outputBytes": 4506
+    },
+    {
+      "name": "latexProjectChatMessages-Cty9Jluh.js",
+      "action": "formatted-javascript",
+      "inputBytes": 277,
+      "outputBytes": 293
+    },
+    {
+      "name": "latexTextPatterns-B444ow6Q.js",
+      "action": "formatted-javascript",
+      "inputBytes": 179,
+      "outputBytes": 203
+    },
+    {
+      "name": "latexWorkspacePanelVisibility-BotBQ6b-.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1341,
+      "outputBytes": 1661
+    },
+    {
+      "name": "latexWriteup-2lgFk4Az.js",
+      "action": "formatted-javascript",
+      "inputBytes": 591,
+      "outputBytes": 799
+    },
+    {
+      "name": "math-vision-logo-BZDuanMC.svg",
+      "action": "removed-logo"
+    },
+    {
+      "name": "math-vision-logo-mark-DOQk6oFV.svg",
+      "action": "removed-logo"
+    },
+    {
+      "name": "mathScene.worker-BgG98-6e.js",
+      "action": "formatted-javascript",
+      "inputBytes": 24365,
+      "outputBytes": 39280
+    },
+    {
+      "name": "maximize-2-B07z4fzS.js",
+      "action": "formatted-javascript",
+      "inputBytes": 410,
+      "outputBytes": 477
+    },
+    {
+      "name": "minimize-2-DiBwEVni.js",
+      "action": "formatted-javascript",
+      "inputBytes": 412,
+      "outputBytes": 479
+    },
+    {
+      "name": "panel-left-close-BNWX01EL.js",
+      "action": "formatted-javascript",
+      "inputBytes": 408,
+      "outputBytes": 472
+    },
+    {
+      "name": "panel-left-open-BNgbA-Qm.js",
+      "action": "formatted-javascript",
+      "inputBytes": 406,
+      "outputBytes": 470
+    },
+    {
+      "name": "panel-right-close-BXzsVzHe.js",
+      "action": "formatted-javascript",
+      "inputBytes": 408,
+      "outputBytes": 472
+    },
+    {
+      "name": "pdf.worker.min-ocdtAcA3.js",
+      "action": "formatted-javascript",
+      "inputBytes": 68,
+      "outputBytes": 74
+    },
+    {
+      "name": "pdfDocument-V1r75ju6.js",
+      "action": "formatted-javascript",
+      "inputBytes": 366387,
+      "outputBytes": 532213
+    },
+    {
+      "name": "pdf_viewer-BXbC1ghE.js",
+      "action": "formatted-javascript",
+      "inputBytes": 148973,
+      "outputBytes": 206798
+    },
+    {
+      "name": "pencil-DHia85Iy.js",
+      "action": "formatted-javascript",
+      "inputBytes": 448,
+      "outputBytes": 535
+    },
+    {
+      "name": "play-3zl_nde-.js",
+      "action": "formatted-javascript",
+      "inputBytes": 362,
+      "outputBytes": 438
+    },
+    {
+      "name": "plotly-strict.min-BMJDfwan.js",
+      "action": "formatted-javascript",
+      "inputBytes": 5185762,
+      "outputBytes": 13411336
+    },
+    {
+      "name": "privacy-4xLeU8-0.js",
+      "action": "formatted-javascript",
+      "inputBytes": 275,
+      "outputBytes": 310
+    },
+    {
+      "name": "public---7j118Y.js",
+      "action": "formatted-javascript",
+      "inputBytes": 28232,
+      "outputBytes": 45741
+    },
+    {
+      "name": "quote-DYxVpGUS.js",
+      "action": "formatted-javascript",
+      "inputBytes": 561,
+      "outputBytes": 690
+    },
+    {
+      "name": "route-CnaWATkl.js",
+      "action": "formatted-javascript",
+      "inputBytes": 12052,
+      "outputBytes": 19049
+    },
+    {
+      "name": "route.lazy-B7bltzFg.js",
+      "action": "formatted-javascript",
+      "inputBytes": 72020,
+      "outputBytes": 113073
+    },
+    {
+      "name": "sampleWriteup-lHlzvOHA.js",
+      "action": "formatted-javascript",
+      "inputBytes": 507,
+      "outputBytes": 531
+    },
+    {
+      "name": "save-Bre0AB4-.js",
+      "action": "formatted-javascript",
+      "inputBytes": 499,
+      "outputBytes": 597
+    },
+    {
+      "name": "search-CE89ACSU.js",
+      "action": "formatted-javascript",
+      "inputBytes": 2632,
+      "outputBytes": 3727
+    },
+    {
+      "name": "send-CDdCro4v.js",
+      "action": "formatted-javascript",
+      "inputBytes": 462,
+      "outputBytes": 549
+    },
+    {
+      "name": "share-_g1t1y30.js",
+      "action": "formatted-javascript",
+      "inputBytes": 790,
+      "outputBytes": 1232
+    },
+    {
+      "name": "source-editor-CGMzw50e.js",
+      "action": "formatted-javascript",
+      "inputBytes": 572683,
+      "outputBytes": 812415
+    },
+    {
+      "name": "square-D0gg5_xj.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1224,
+      "outputBytes": 1390
+    },
+    {
+      "name": "streamNdjson-sRiOwtSP.js",
+      "action": "formatted-javascript",
+      "inputBytes": 480,
+      "outputBytes": 655
+    },
+    {
+      "name": "terms-Bjf0FKSt.js",
+      "action": "formatted-javascript",
+      "inputBytes": 275,
+      "outputBytes": 310
+    },
+    {
+      "name": "threadMessageListLazy-ghC-RLRq.js",
+      "action": "formatted-javascript",
+      "inputBytes": 8686,
+      "outputBytes": 11968
+    },
+    {
+      "name": "tour-guide.lazy-CGN25M6e.js",
+      "action": "formatted-javascript",
+      "inputBytes": 7500,
+      "outputBytes": 11234
+    },
+    {
+      "name": "triangle-alert-C5eP7BuB.js",
+      "action": "formatted-javascript",
+      "inputBytes": 437,
+      "outputBytes": 535
+    },
+    {
+      "name": "upload-Df6L5ERk.js",
+      "action": "formatted-javascript",
+      "inputBytes": 402,
+      "outputBytes": 458
+    },
+    {
+      "name": "useAttachmentContent-15uaQfvd.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1594,
+      "outputBytes": 2327
+    },
+    {
+      "name": "useBlocker-Cad78cFE.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1490,
+      "outputBytes": 2466
+    },
+    {
+      "name": "useControlOrMetaShortcut-DL7j4WBM.js",
+      "action": "formatted-javascript",
+      "inputBytes": 675,
+      "outputBytes": 1002
+    },
+    {
+      "name": "useGetUserType-DlzkERhz.js",
+      "action": "formatted-javascript",
+      "inputBytes": 389,
+      "outputBytes": 521
+    },
+    {
+      "name": "useInfiniteQuery-CdNTitqC.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1198,
+      "outputBytes": 1607
+    },
+    {
+      "name": "useIsMobile-SdtLFChL.js",
+      "action": "formatted-javascript",
+      "inputBytes": 1592,
+      "outputBytes": 2372
+    },
+    {
+      "name": "useLatexProjectCreation-BfZAUJk-.js",
+      "action": "formatted-javascript",
+      "inputBytes": 2243,
+      "outputBytes": 3641
+    },
+    {
+      "name": "useLatexQueries-DBpKOPUv.js",
+      "action": "formatted-javascript",
+      "inputBytes": 21007,
+      "outputBytes": 29607
+    },
+    {
+      "name": "useLocation-BxGXieoN.js",
+      "action": "formatted-javascript",
+      "inputBytes": 131,
+      "outputBytes": 156
+    },
+    {
+      "name": "useMutation-C1SgG9wr.js",
+      "action": "formatted-javascript",
+      "inputBytes": 3104,
+      "outputBytes": 4920
+    },
+    {
+      "name": "usePdfDocument-D5PFNoxR.js",
+      "action": "formatted-javascript",
+      "inputBytes": 774,
+      "outputBytes": 1320
+    },
+    {
+      "name": "usePdfObjectUrl-Cd7ol8-S.js",
+      "action": "formatted-javascript",
+      "inputBytes": 371,
+      "outputBytes": 615
+    },
+    {
+      "name": "useQuery-DM2qiUYb.js",
+      "action": "formatted-javascript",
+      "inputBytes": 10486,
+      "outputBytes": 16570
+    },
+    {
+      "name": "useQueuedWriteupPdf-CoC8uXix.js",
+      "action": "formatted-javascript",
+      "inputBytes": 5465,
+      "outputBytes": 8933
+    },
+    {
+      "name": "useResizablePanelValue-D_NwbF9E.js",
+      "action": "formatted-javascript",
+      "inputBytes": 4460,
+      "outputBytes": 7541
+    },
+    {
+      "name": "useResizablePanelWidth-DfMwOMGi.js",
+      "action": "formatted-javascript",
+      "inputBytes": 866,
+      "outputBytes": 1245
+    },
+    {
+      "name": "waitlist-D54NJ_xG.js",
+      "action": "formatted-javascript",
+      "inputBytes": 608,
+      "outputBytes": 682
+    },
+    {
+      "name": "writeupPdfCompileQueue-lQRkz9rt.js",
+      "action": "formatted-javascript",
+      "inputBytes": 516,
+      "outputBytes": 846
+    },
+    {
+      "name": "zoom-in-uCZ29dqq.js",
+      "action": "formatted-javascript",
+      "inputBytes": 845,
+      "outputBytes": 998
+    }
+  ]
+}

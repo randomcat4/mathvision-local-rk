@@ -1,0 +1,584 @@
+[
+  {
+    "fileName": "AccessStatusPage-BWPFK5HR.jsx",
+    "semanticName": "AccessStatusPage",
+    "renamedFrom": "me",
+    "renamed": true
+  },
+  {
+    "fileName": "AgentExecutionResult-MyNStJTJ.jsx",
+    "semanticName": "AgentExecutionResult",
+    "renamedFrom": "Pt",
+    "renamed": true
+  },
+  {
+    "fileName": "AgentTaskProgress-bXMst_Kr.jsx",
+    "semanticName": "AgentTaskProgress",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "Alert-DnFVD8li.jsx",
+    "semanticName": "Alert",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "AlertTitle-B2wnIUF2.jsx",
+    "semanticName": "AlertTitle",
+    "renamedFrom": "d",
+    "renamed": true
+  },
+  {
+    "fileName": "AssistantMessageMetadata-BCGLTOhc.jsx",
+    "semanticName": "AssistantMessageMetadata",
+    "renamedFrom": "y",
+    "renamed": true
+  },
+  {
+    "fileName": "AssistantStructuredResponse-CZDMu2rs.jsx",
+    "semanticName": "AssistantStructuredResponse",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "AttachmentFileName-BwwbwxPg.jsx",
+    "semanticName": "AttachmentFileName",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "AutoAwesomeRounded-DwWNeeYP.jsx",
+    "semanticName": "AutoAwesomeRounded",
+    "renamedFrom": "s",
+    "renamed": true
+  },
+  {
+    "fileName": "Badge-b-klHfWK.jsx",
+    "semanticName": "Badge",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "Card-Bf0WPnf4.jsx",
+    "semanticName": "Card",
+    "renamedFrom": "j",
+    "renamed": true
+  },
+  {
+    "fileName": "ChatInteractionOverrides-dyfOoEnd.jsx",
+    "semanticName": "ChatInteractionOverrides",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "ChatPanelMoreMenu-B1X9SOWN.jsx",
+    "semanticName": "ChatPanelMoreMenu",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "ChatPanelMoreMenuContent-D1GGdgpe.jsx",
+    "semanticName": "ChatPanelMoreMenuContent",
+    "renamedFrom": "jt",
+    "renamed": true
+  },
+  {
+    "fileName": "ComposerAttachmentCard-BVMHeN2h.jsx",
+    "semanticName": "ComposerAttachmentCard",
+    "renamedFrom": "J",
+    "renamed": true
+  },
+  {
+    "fileName": "ComposerAttachmentCards-CNJKQcrr.jsx",
+    "semanticName": "ComposerAttachmentCards",
+    "renamedFrom": "b",
+    "renamed": true
+  },
+  {
+    "fileName": "ComposerQuote-2g1HGk7u.jsx",
+    "semanticName": "ComposerQuote",
+    "renamedFrom": "E",
+    "renamed": true
+  },
+  {
+    "fileName": "ComputeStructuredSection-C40NdNj6.jsx",
+    "semanticName": "ComputeStructuredSection",
+    "renamedFrom": "Ft",
+    "renamed": true
+  },
+  {
+    "fileName": "Container-C988byeG.jsx",
+    "semanticName": "Container",
+    "renamedFrom": "D",
+    "renamed": true
+  },
+  {
+    "fileName": "CopyButton-BcOsqrNJ.jsx",
+    "semanticName": "CopyButton",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "DebouncedTextField-DEJkKI5N.jsx",
+    "semanticName": "DebouncedTextField",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "DeferredThreadMessageList-BRB1t-55.jsx",
+    "semanticName": "DeferredThreadMessageList",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "Divider-BcuihGce.jsx",
+    "semanticName": "Divider",
+    "renamedFrom": "W",
+    "renamed": true
+  },
+  {
+    "fileName": "Drawer-ByPJ5WV0.jsx",
+    "semanticName": "Drawer",
+    "renamedFrom": "Rt",
+    "renamed": true
+  },
+  {
+    "fileName": "FloatingFeatureAnnouncements-BUSQvA1p.jsx",
+    "semanticName": "FloatingFeatureAnnouncements",
+    "renamedFrom": "In",
+    "renamed": true
+  },
+  {
+    "fileName": "FormControlLabel-CQvCddOM.jsx",
+    "semanticName": "FormControlLabel",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "FormGroup-BsLWbxpH.jsx",
+    "semanticName": "FormGroup",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "GeneratedArtifactContent-DZ9NE8JY.jsx",
+    "semanticName": "GeneratedArtifactContent",
+    "renamedFrom": "M",
+    "renamed": true
+  },
+  {
+    "fileName": "LatexAttachmentPreviewDrawer-DQLImhiz.jsx",
+    "semanticName": "LatexAttachmentPreviewDrawer",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "LatexDocumentCreateDrawer-Urvzcv4B.jsx",
+    "semanticName": "LatexDocumentCreateDrawer",
+    "renamedFrom": "Ze",
+    "renamed": true
+  },
+  {
+    "fileName": "LatexDocumentSelector-CsoCVGim.jsx",
+    "semanticName": "LatexDocumentSelector",
+    "renamedFrom": "et",
+    "renamed": true
+  },
+  {
+    "fileName": "LatexProjectChatPanel-DKAp7Vbq.jsx",
+    "semanticName": "LatexProjectChatPanel",
+    "renamedFrom": "us",
+    "renamed": true
+  },
+  {
+    "fileName": "LatexProjectFolderExpansionContext-DKFyp-6E.jsx",
+    "semanticName": "LatexProjectFolderExpansionContext",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "LatexWorkspaceCanvas-DKG1oD4d.jsx",
+    "semanticName": "LatexWorkspaceCanvas",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "LinkOffRounded-CKGtm4_4.jsx",
+    "semanticName": "LinkOffRounded",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "ListItemIcon-CaLBil7Q.jsx",
+    "semanticName": "ListItemIcon",
+    "renamedFrom": "R",
+    "renamed": true
+  },
+  {
+    "fileName": "ListItemText-CBxudZz_.jsx",
+    "semanticName": "ListItemText",
+    "renamedFrom": "H",
+    "renamed": true
+  },
+  {
+    "fileName": "LoadingSection-wWBu2CqJ.jsx",
+    "semanticName": "LoadingSection",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "LogoutRounded-BsETu1qq.jsx",
+    "semanticName": "LogoutRounded",
+    "renamedFrom": "t",
+    "renamed": true
+  },
+  {
+    "fileName": "MChip-DiH8NXBU.jsx",
+    "semanticName": "MChip",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "Markdown-Dh8LhaRc.jsx",
+    "semanticName": "Markdown",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "MarkdownHighlights-C-ZhT8z1.jsx",
+    "semanticName": "MarkdownHighlights",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "MathSceneThreeViewport-DhqPyZj9.jsx",
+    "semanticName": "MathSceneThreeViewport",
+    "renamedFrom": "CN",
+    "renamed": true
+  },
+  {
+    "fileName": "MessageAttachments-nUg1LIry.jsx",
+    "semanticName": "MessageAttachments",
+    "renamedFrom": "ce",
+    "renamed": true
+  },
+  {
+    "fileName": "MessageBubble-DqxHrk03.jsx",
+    "semanticName": "MessageBubble",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "NextStepsResponse-NcFjw3w7.jsx",
+    "semanticName": "NextStepsResponse",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "NotebookWorkspaceContent-Cmckz3Qo.jsx",
+    "semanticName": "NotebookWorkspaceContent",
+    "renamedFrom": "as",
+    "renamed": true
+  },
+  {
+    "fileName": "OpenInNewRounded-D-7V5TzF.jsx",
+    "semanticName": "OpenInNewRounded",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "PdfCanvasViewer-jW4Ex2Pm.jsx",
+    "semanticName": "PdfCanvasViewer",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "PdfCanvasViewerControls-CKiN42mP.jsx",
+    "semanticName": "PdfCanvasViewerControls",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "PdfContinuousCanvasViewer-CbJuZJkv.jsx",
+    "semanticName": "PdfContinuousCanvasViewer",
+    "renamedFrom": "ue",
+    "renamed": true
+  },
+  {
+    "fileName": "PersonalizationDialog-SAjscOQ8.jsx",
+    "semanticName": "PersonalizationDialog",
+    "renamedFrom": "ct",
+    "renamed": true
+  },
+  {
+    "fileName": "ProChatCallGraphDialog-BIa-XWUO.jsx",
+    "semanticName": "ProChatCallGraphDialog",
+    "renamedFrom": "pt",
+    "renamed": true
+  },
+  {
+    "fileName": "QuotedSelection-JUU54BvY.jsx",
+    "semanticName": "QuotedSelection",
+    "renamedFrom": "z",
+    "renamed": true
+  },
+  {
+    "fileName": "RadioGroup-CvCoRbaB.jsx",
+    "semanticName": "RadioGroup",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "ReportFeedbackDialog-DzymJyQD.jsx",
+    "semanticName": "ReportFeedbackDialog",
+    "renamedFrom": "ee",
+    "renamed": true
+  },
+  {
+    "fileName": "SidebarTreeConnector-DsRNfBIo.jsx",
+    "semanticName": "SidebarTreeConnector",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "Slider-v2yN6a4G.jsx",
+    "semanticName": "Slider",
+    "renamedFrom": "Ct",
+    "renamed": true
+  },
+  {
+    "fileName": "StructuredMarkdown-DAWLLRpf.jsx",
+    "semanticName": "StructuredMarkdown",
+    "renamedFrom": "X",
+    "renamed": true
+  },
+  {
+    "fileName": "SupportingArtifactCard-B1XjYGZI.jsx",
+    "semanticName": "SupportingArtifactCard",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "TextField-D8vc_sXz.jsx",
+    "semanticName": "TextField",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "ThinkingElapsedLabel-DKCKD95O.jsx",
+    "semanticName": "ThinkingElapsedLabel",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "ThreadPendingAssistantMessage-SEoTs7JJ.jsx",
+    "semanticName": "ThreadPendingAssistantMessage",
+    "renamedFrom": "ls",
+    "renamed": true
+  },
+  {
+    "fileName": "ThreadTour-1OvtQgmE.jsx",
+    "semanticName": "ThreadTour",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "TimeRelative-HYP_-RcH.jsx",
+    "semanticName": "TimeRelative",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "UserMessage-DN7iPijg.jsx",
+    "semanticName": "UserMessage",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "ViewportVisualizationFigure-BIlJdDlH.jsx",
+    "semanticName": "ViewportVisualizationFigure",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "VisualizationStructuredSection-BK_R26-B.jsx",
+    "semanticName": "VisualizationStructuredSection",
+    "renamedFrom": "at",
+    "renamed": true
+  },
+  {
+    "fileName": "WorkspaceExplorer-BkU1kYog.jsx",
+    "semanticName": "WorkspaceExplorer",
+    "renamedFrom": "aa",
+    "renamed": true
+  },
+  {
+    "fileName": "WorkspaceSidePanelFrame-BElEFQhq.jsx",
+    "semanticName": "WorkspaceSidePanelFrame",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "WriteupDisplayControls-E0ZIJhIu.jsx",
+    "semanticName": "WriteupDisplayControls",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "WriteupStructuredResponsePanel-CPg9TOt6.jsx",
+    "semanticName": "WriteupStructuredResponsePanel",
+    "renamedFrom": "Zt",
+    "renamed": true
+  },
+  {
+    "fileName": "_chatId-BHWou8be.jsx",
+    "semanticName": "_chatId",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "_problemId.lazy-1puKhYPi.jsx",
+    "semanticName": "_problemId.lazy",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "accept-2s0vxcCe.jsx",
+    "semanticName": "accept",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "account-disabled-CVRHuqTs.jsx",
+    "semanticName": "account",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "assistantStructuredResponseLazy-CCAemx3W.jsx",
+    "semanticName": "assistantStructuredResponseLazy",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "attachmentsApi-BHgxfYft.jsx",
+    "semanticName": "attachmentsApi",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "dialogs-D-Okwmpa.jsx",
+    "semanticName": "dialogs",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "documents-DhCTfQKt.jsx",
+    "semanticName": "documents",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "downloadBlob-CusuPFei.jsx",
+    "semanticName": "downloadBlob",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "graphDialogStyles-BtRC286U.jsx",
+    "semanticName": "graphDialogStyles",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "index-BM3ZINIl.jsx",
+    "semanticName": "index",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "index-DzMT-bSF.jsx",
+    "semanticName": "index",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "index.lazy-CeqeR69n.jsx",
+    "semanticName": "index.lazy",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "privacy-4xLeU8-0.jsx",
+    "semanticName": "privacy",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "public---7j118Y.jsx",
+    "semanticName": "public",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "route-CnaWATkl.jsx",
+    "semanticName": "route",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "route.lazy-B7bltzFg.jsx",
+    "semanticName": "route.lazy",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "search-CE89ACSU.jsx",
+    "semanticName": "search",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "share-_g1t1y30.jsx",
+    "semanticName": "share",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "source-editor-CGMzw50e.jsx",
+    "semanticName": "source",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "terms-Bjf0FKSt.jsx",
+    "semanticName": "terms",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "tour-guide.lazy-CGN25M6e.jsx",
+    "semanticName": "tour-guide.lazy",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "useAttachmentContent-15uaQfvd.jsx",
+    "semanticName": "useAttachmentContent",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "useLatexProjectCreation-BfZAUJk-.jsx",
+    "semanticName": "useLatexProjectCreation",
+    "renamedFrom": null,
+    "renamed": false
+  },
+  {
+    "fileName": "waitlist-D54NJ_xG.jsx",
+    "semanticName": "waitlist",
+    "renamedFrom": null,
+    "renamed": false
+  }
+]

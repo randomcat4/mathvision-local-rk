@@ -1,0 +1,2 @@
+import assert from "node:assert/strict"; import test from "node:test"; import { sanitizeTourReturnPath } from "../src/features/tour/tourGuideRoute";
+test("accepts only non-tour chat return paths",()=>{assert.equal(sanitizeTourReturnPath("/chats/abc?x=1#y"),"/chats/abc?x=1#y");assert.equal(sanitizeTourReturnPath("/admin"),"/chats");assert.equal(sanitizeTourReturnPath("/chats/tour-guide"),"/chats");});

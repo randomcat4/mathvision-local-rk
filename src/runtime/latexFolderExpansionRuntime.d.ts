@@ -1,0 +1,1 @@
+export function usePersistentValue<T>(options:{storageKey:string;defaultValue:T;parse(serialized:string):T;serialize(value:T):string;readErrorMessage:string;writeErrorMessage:string}):{value:T;updateValue(updater:(current:T)=>T):void};

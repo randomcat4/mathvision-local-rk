@@ -1,0 +1,62 @@
+import { r as s, j as a } from "./index-BM3ZINIl.js";
+import { g as e } from "./SupportingArtifactCard-B1XjYGZI.js";
+import { G as _Component } from "./GeneratedArtifactContent-DZ9NE8JY.js";
+import "./assistantStructuredResponseLazy-CCAemx3W.js";
+import "./useQuery-DM2qiUYb.js";
+import "./triangle-alert-C5eP7BuB.js";
+import "./circle-check-B9fquZbm.js";
+import "./MChip-DiH8NXBU.js";
+import "./TextField-D8vc_sXz.js";
+import "./Divider-BcuihGce.js";
+import "./LoadingSection-wWBu2CqJ.js";
+import "./ThinkingElapsedLabel-DKCKD95O.js";
+import "./MarkdownHighlights-C-ZhT8z1.js";
+import "./index-Yb6ONXKu.js";
+import "./streamNdjson-sRiOwtSP.js";
+import "./MessageBubble-DqxHrk03.js";
+import "./OpenInNewRounded-D-7V5TzF.js";
+import "./FormControlLabel-CQvCddOM.js";
+import "./Markdown-Dh8LhaRc.js";
+import "./katex.min-ADdKj7O-.js";
+import "./CopyButton-BcOsqrNJ.js";
+import "./index-DzMT-bSF.js";
+import "./file-code-corner-DV79SyC0.js";
+import "./code-xml-DmfSENe3.js";
+import "./Drawer-ByPJ5WV0.js";
+import "./useAttachmentContent-15uaQfvd.js";
+import "./attachmentsApi-BHgxfYft.js";
+import "./authFetch-DXjDztUP.js";
+import "./Card-Bf0WPnf4.js";
+import "./ViewportVisualizationFigure-BIlJdDlH.js";
+import "./useLatexQueries-DBpKOPUv.js";
+import "./search-CE89ACSU.js";
+import "./useMutation-C1SgG9wr.js";
+import "./useInfiniteQuery-CdNTitqC.js";
+import "./cache-BNzcfneg.js";
+import "./downloadBlob-CusuPFei.js";
+import "./Alert-DnFVD8li.js";
+import "./ListItemIcon-CaLBil7Q.js";
+import "./file-input-BGVdGffy.js";
+import "./panel-right-close-BXzsVzHe.js";
+import "./chevron-left-BwEFN4zp.js";
+import "./minimize-2-DiBwEVni.js";
+import "./maximize-2-B07z4fzS.js";
+import "./zoom-in-uCZ29dqq.js";
+import "./square-D0gg5_xj.js";
+import "./eraser-B4pclN2p.js";
+import "./DebouncedTextField-DEJkKI5N.js";
+import "./Slider-v2yN6a4G.js";
+import "./play-3zl_nde-.js";
+import "./pencil-DHia85Iy.js";
+import "./circle-DSozMRKK.js";
+const at = ({
+  artifactMessage: t,
+  artifactRefs: r,
+  artifacts: o,
+  children: i,
+  mathSyntax: m
+}) => {
+  const p = s.useMemo(() => t ? e(t, "visualization") : [], [t]);
+  return <_Component artifactRefs={r} artifacts={o ?? p} mathSyntax={m}>{i}</_Component>;
+};
+export { at as VisualizationStructuredSection };

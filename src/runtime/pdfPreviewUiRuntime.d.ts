@@ -1,0 +1,11 @@
+import type { ComponentType } from "react";
+import type { PdfContinuousCanvasViewerProps } from "../features/pdf/PdfContinuousCanvasViewer";
+export const Alert: ComponentType<any>;
+export const Box: ComponentType<any>;
+export const CircularProgress: ComponentType<any>;
+export const FormLabel: ComponentType<any>;
+export const PdfCanvasViewerControls: ComponentType<any>;
+export const PdfContinuousCanvasViewer: ComponentType<PdfContinuousCanvasViewerProps>;
+export const Switch: ComponentType<any>;
+export const Typography: ComponentType<any>;
+export const DEFAULT_PDF_ZOOM: number;

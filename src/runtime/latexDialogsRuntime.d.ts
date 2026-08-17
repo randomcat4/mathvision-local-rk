@@ -1,0 +1,15 @@
+import type { ComponentType } from "react";
+export { default as React } from "react";
+export const Alert: ComponentType<any>;
+export const Box: ComponentType<any>;
+export const Button: ComponentType<any>;
+export const CheckCircleIcon: ComponentType<any>;
+export const ConfirmationDialog: ComponentType<any>;
+export const Dialog: ComponentType<any>;
+export const DialogActions: ComponentType<any>;
+export const DialogContent: ComponentType<any>;
+export const DialogTitle: ComponentType<any>;
+export const FileIcon: ComponentType<any>;
+export const TextField: ComponentType<any>;
+export const Typography: ComponentType<any>;
+export function alpha(color: string, opacity: number): string;

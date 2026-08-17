@@ -1,0 +1,14 @@
+{
+  "generatedAt": "2026-08-17T19:30:44.881Z",
+  "applicationCandidates": 97,
+  "elevatedApplicationModules": 56,
+  "recoveredProductionViews": 7,
+  "recoveredSupportModules": 2,
+  "recoveredVendorModules": 1,
+  "recoveredViewCheck": "syntax-and-production-build",
+  "frozenVendorModules": 19,
+  "mixedBoundaryModules": 22,
+  "remainingApplicationModules": [],
+  "strictSourceFiles": 216,
+  "tsNoCheckFiles": 0
+}

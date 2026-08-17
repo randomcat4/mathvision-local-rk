@@ -1,0 +1,20 @@
+import type { ComponentType } from "react";
+
+export const Button: ComponentType<any>;
+export const CloseIcon: ComponentType<any>;
+export const Dialog: ComponentType<any>;
+export const DialogActions: ComponentType<any>;
+export const DialogContent: ComponentType<any>;
+export const DialogTitle: ComponentType<any>;
+export const FormControl: ComponentType<any>;
+export const FormControlLabel: ComponentType<any>;
+export const FormLabel: ComponentType<any>;
+export const Radio: ComponentType<any>;
+export const RadioGroup: ComponentType<any>;
+export const SendIcon: ComponentType<any>;
+export const Stack: ComponentType<any>;
+export const TextField: ComponentType<any>;
+export const TooltipIconButton: ComponentType<any>;
+export const Typography: ComponentType<any>;
+export const toast: { success(message: string): void; error(message: string): void };
+export function getErrorMessage(error: unknown): string | null;

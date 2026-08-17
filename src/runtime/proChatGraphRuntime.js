@@ -1,0 +1,15 @@
+import { g as alpha, B as Box, T as Typography, aw as useTheme, V as TooltipIconButton, X as CloseIcon, _ as Button, C as CircularProgress } from "../chunks/index-BM3ZINIl.jsx";
+import { b as layoutWorkflowGraph, P as Position, M as MarkerType, H as Handle, g as dialogTitleStyles, a as dialogTitleCopyStyles, c as dialogTitleActionsStyles, d as graphPaneStyles, e as graphStateStyles, i as ReactFlow, f as proOptions, h as fitViewOptions, B as Background, C as Controls, j as graphDialogContentStyles, k as sidePanelStyles, l as detailsHeaderStyles, m as detailsHeaderCopyStyles, s as sectionStyles, n as metricTileStyles } from "../chunks/graphDialogStyles-BtRC286U.jsx";
+import { a as useAttachmentContent } from "../chunks/useAttachmentContent-15uaQfvd.js";
+import { a as Markdown } from "../chunks/Markdown-Dh8LhaRc.jsx";
+import { M as Chip, D as Dialog, a as DialogTitle, b as DialogContent } from "../chunks/MChip-DiH8NXBU.jsx";
+import { e as formatDurationSeconds } from "../chunks/assistantStructuredResponseLazy-CCAemx3W.jsx";
+import { D as Divider } from "../chunks/Divider-BcuihGce.jsx";
+import { T as ToggleButtonGroup, a as ToggleButton } from "../chunks/SidebarTreeConnector-DsRNfBIo.jsx";
+import { C as DownloadIcon } from "../chunks/circle-check-B9fquZbm.js";
+import { F as DownloadNotesIcon } from "../chunks/OpenInNewRounded-D-7V5TzF.jsx";
+import { lazy } from "react";
+const PdfCanvasViewer=lazy(()=>import("../chunks/PdfCanvasViewer-jW4Ex2Pm.js").then(module=>({default:module.PdfCanvasViewer})));
+const getNodeDetail=(node)=>node.kind==="compute"?node.subtitle:"";
+const formatNodeRuntime=(node)=>{if(!node.streamStartedAt||!node.streamUpdatedAt)return null;const started=Date.parse(node.streamStartedAt);const updated=Date.parse(node.streamUpdatedAt);if(!Number.isFinite(started)||!Number.isFinite(updated))throw new Error("The Math Vision Pro workflow node timestamps are invalid.");if(updated<started)throw new Error("The Math Vision Pro workflow node end time precedes its start time.");return formatDurationSeconds((updated-started)/1000);};
+export { alpha, Background, Box, Button, Chip, CircularProgress, CloseIcon, Controls, detailsHeaderCopyStyles, detailsHeaderStyles, dialogTitleActionsStyles, dialogTitleCopyStyles, dialogTitleStyles, Dialog, DialogContent, DialogTitle, Divider, DownloadIcon, DownloadNotesIcon, fitViewOptions, formatNodeRuntime, getNodeDetail, graphDialogContentStyles, graphPaneStyles, graphStateStyles, Handle, layoutWorkflowGraph, MarkerType, Markdown, metricTileStyles, PdfCanvasViewer, Position, proOptions, ReactFlow, sectionStyles, sidePanelStyles, ToggleButton, ToggleButtonGroup, TooltipIconButton, Typography, useAttachmentContent, useTheme };

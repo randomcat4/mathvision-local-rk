@@ -1,0 +1,12 @@
+import type { ComponentType } from "react";
+export const ArrowBackIcon: ComponentType<any>;
+export const Box: ComponentType<any>;
+export const Button: ComponentType<any>;
+export const Container: ComponentType<any>;
+export const Divider: ComponentType<any>;
+export const Link: ComponentType<any>;
+export const Markdown: ComponentType<any>;
+export const Paper: ComponentType<any>;
+export const Stack: ComponentType<any>;
+export const Typography: ComponentType<any>;
+export function useRouter(): { history: { back(): void } };

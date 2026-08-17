@@ -1,0 +1,22 @@
+import type { ComponentType } from "react";
+export const Autocomplete: ComponentType<any>;
+export const Box: ComponentType<any>;
+export const Button: ComponentType<any>;
+export const Checkbox: ComponentType<any>;
+export const CircularProgress: ComponentType<any>;
+export const Divider: ComponentType<any>;
+export const ExternalLinkIcon: ComponentType<any>;
+export const FilePlusIcon: ComponentType<any>;
+export const Popover: ComponentType<any>;
+export const RouterLink: ComponentType<any>;
+export const TextField: ComponentType<any>;
+export const TooltipIconButton: ComponentType<any>;
+export const Typography: ComponentType<any>;
+export function alpha(color: string, opacity: number): string;
+export function getAvailableLatexDocumentName(documents: Array<{ name: string }>): string;
+export function isModifiedEvent(): boolean;
+export function setLatexDocumentSearch(search: Record<string, unknown>, id: string): Record<string, unknown>;
+export const toast: { error(message: string): void };
+export function useLatexDocuments(): { data?: LatexDocumentOption[]; isPending: boolean; isError: boolean };
+export function useNavigate(): (options: Record<string, unknown>) => void;
+export interface LatexDocumentOption { id: string; name: string; source: string; lastUpdated: string }
