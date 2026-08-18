@@ -846,7 +846,7 @@ const as = ({
     );
     if (!Number.isFinite(u)) {
       throw new Error(
-        "The Math Vision Pro call review model start time is invalid.",
+        "The RK run review model start time is invalid.",
       );
     }
     E = u;
@@ -860,12 +860,12 @@ const as = ({
     const _ = Date.parse(y.streamUpdatedAt);
     if (!Number.isFinite(u) || !Number.isFinite(_)) {
       throw new Error(
-        "The Math Vision Pro call author thought timestamps are invalid.",
+        "The RK run author thought timestamps are invalid.",
       );
     }
     if (_ < u) {
       throw new Error(
-        "The Math Vision Pro call author thought end time precedes its start time.",
+        "The RK run author thought end time precedes its start time.",
       );
     }
     P = Math.round((_ - u) / 1000);
@@ -1092,12 +1092,12 @@ const Xs = (t) => {
   const r = Date.parse(t.streamUpdatedAt);
   if (!Number.isFinite(s) || !Number.isFinite(r)) {
     throw new Error(
-      "The Math Vision Pro workflow node timestamps are invalid.",
+      "The RK workflow node timestamps are invalid.",
     );
   }
   if (r < s) {
     throw new Error(
-      "The Math Vision Pro workflow node end time precedes its start time.",
+      "The RK workflow node end time precedes its start time.",
     );
   }
   return It((r - s) / 1000);
@@ -1272,7 +1272,7 @@ const xs = ({
     queryFn: () => {
       if (!t) {
         throw new Error(
-          "An admin user target is required to load a Math Vision Pro call.",
+          "An admin user target is required to load an RK run.",
         );
       }
       return Qe(t, r, c.runId, l);
@@ -1364,7 +1364,7 @@ const xs = ({
     }
     const m = Date.parse(I.streamStartedAt ?? n.startedAt ?? n.createdAt);
     if (!Number.isFinite(m)) {
-      throw new Error("The Math Vision Pro call author start time is invalid.");
+      throw new Error("The RK run author start time is invalid.");
     }
     return m;
   }, [I, n]);
@@ -1398,7 +1398,7 @@ const xs = ({
       i.mutate();
       return;
     }
-    throw new Error("A Math Vision Pro call confirmation action is required.");
+    throw new Error("An RK run confirmation action is required.");
   }, [y, p, i]);
   const D = o.useCallback(() => {
     h(true);
@@ -1413,15 +1413,15 @@ const xs = ({
   const B = Q || q || (s && E);
   const lt =
     p === "cancel"
-      ? "Cancel Math Vision Pro call?"
+      ? "Cancel RK run?"
       : p === "restart"
-        ? "Restart Math Vision Pro call?"
+        ? "Restart RK run?"
         : "";
   const ct =
     p === "cancel"
-      ? "Cancel Math Vision Pro call"
+      ? "Cancel RK run"
       : p === "restart"
-        ? "Restart Math Vision Pro call"
+        ? "Restart RK run"
         : "";
   return (
     <_Component22
@@ -1489,7 +1489,7 @@ const xs = ({
         <_Component17 severity="error">
           {x
             ? "Could not load this Pro call for the selected user."
-            : "Could not refresh Run with Math Vision Pro progress. The stream will reconnect."}
+            : "Could not refresh RK progress. The stream will reconnect."}
         </_Component17>
       )}
       {T === "failed" && <_Component17 severity="error">{X}</_Component17>}
@@ -1516,7 +1516,7 @@ const xs = ({
               disabled={y.isPending}
               onClick={Y}
             >
-              {y.isPending ? "Canceling" : "Cancel Math Vision Pro call"}
+              {y.isPending ? "Canceling" : "Cancel RK run"}
             </L>
           )}
           {q && (

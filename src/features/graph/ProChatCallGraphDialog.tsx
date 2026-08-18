@@ -62,6 +62,8 @@ const archivedMessageRoleLabels: Record<ArchivedThreadMessage["role"], string> =
   response: "回复",
   tool: "运行回传",
   review: "审计裁决",
+  commentary: "进度",
+  final: "最终回传",
 };
 
 const archivedMessageTime = new Intl.DateTimeFormat("zh-CN", {
@@ -738,10 +740,10 @@ export function ProChatCallGraphDialog({
       <DialogTitle sx={dialogTitleStyles}>
         <Box sx={dialogTitleCopyStyles}>
           <Typography variant="subtitle1" noWrap>
-            Math Vision Pro call workflow
+            RK research workflow
           </Typography>
           <Typography variant="caption" color="textSecondary" noWrap>
-            Math Vision Pro call message index {messageIndex} · {nodes.length}{" "}
+            RK run message index {messageIndex} · {nodes.length}{" "}
             workflow steps · {edges.length} connections
           </Typography>
         </Box>

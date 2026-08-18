@@ -11,14 +11,18 @@ import {
 test("builds a production-shaped 132-round parallel Gao workflow fixture", () => {
   assert.deepEqual(gaoOriginalWorkflowStats, {
     rounds: 132,
-    nodes: 176,
-    edges: 318,
-    rejected: 16,
+    nodes: 186,
+    edges: 338,
+    rejected: 17,
   });
   assert.equal(gaoOriginalWorkflowRun.id, GAO_ORIGINAL_RUN_ID);
   assert.equal(gaoOriginalWorkflowRun.chat_id, GAO_ORIGINAL_CHAT_ID);
-  assert.equal(gaoOriginalWorkflowRun.state.workflow.nodes.at(-1)?.round_index, 132);
-  assert.equal(gaoOriginalWorkflowRun.state.workflow.edges.length, 318);
+  assert.equal(
+    Math.max(...gaoOriginalWorkflowRun.state.workflow.nodes.map((node) => node.round_index)),
+    132,
+  );
+  assert.ok(gaoOriginalWorkflowRun.state.workflow.nodes.some((node) => node.id === "main-final" && node.round_index === 132));
+  assert.equal(gaoOriginalWorkflowRun.state.workflow.edges.length, 338);
 });
 
 test("attaches the static Pro call to the original assistant message shape", () => {
@@ -66,10 +70,20 @@ test("keeps every workflow edge endpoint inside the fixture graph", () => {
 
 test("adds a bounded twelve-node archived chat preview", () => {
   const archivedNodes = gaoOriginalWorkflowRun.state.workflow.nodes.filter(
-    (node) => node.archived_messages !== undefined,
+    (node) => node.kind !== "codex_archive" && node.archived_messages !== undefined,
   );
   assert.equal(archivedNodes.length, 12);
   assert.ok(archivedNodes.every((node) => (node.archived_messages?.length ?? 0) >= 2));
   assert.ok(archivedNodes.some((node) => node.id === "mixed-reject" && node.status === "failed"));
   assert.ok(archivedNodes.some((node) => node.id === "main-final"));
+});
+
+test("adds ten separately identified real Codex visible-message archives", () => {
+  const realArchives = gaoOriginalWorkflowRun.state.workflow.nodes.filter(
+    (node) => node.kind === "codex_archive",
+  );
+  assert.equal(realArchives.length, 10);
+  assert.equal(new Set(realArchives.map((node) => node.subtitle)).size, 10);
+  assert.ok(realArchives.every((node) => node.subtitle.startsWith("Codex 原始可见记录")));
+  assert.ok(realArchives.every((node) => node.archived_messages?.some((message) => message.role === "final")));
 });

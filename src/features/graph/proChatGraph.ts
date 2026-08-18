@@ -6,7 +6,7 @@ export const PRO_CHAT_GATE_SIZE = 16;
 export interface ArchivedThreadMessage {
   id: string;
   author: string;
-  role: "request" | "response" | "tool" | "review";
+  role: "request" | "response" | "tool" | "review" | "commentary" | "final";
   content: string;
   at: string;
 }

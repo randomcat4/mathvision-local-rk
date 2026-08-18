@@ -3428,7 +3428,7 @@ const Qb = ({ isVisible: e, isDisabled: t, isRunning: n, onConfirm: r }) => {
           variant="contained"
           color="primary"
           disabled={t}
-          tooltip="Use your daily Math Vision Pro"
+          tooltip="Use RK"
           onClick={() => {
             o(true);
           }}
@@ -3441,10 +3441,10 @@ const Qb = ({ isVisible: e, isDisabled: t, isRunning: n, onConfirm: r }) => {
         </Vt>
         <_Component10
           open={s}
-          title="Start a Math Vision Pro?"
-          message="Power users can start one Math Vision Pro request every 24 hours. It will run in the background and update this answer as work completes."
+          title="Start an RK run?"
+          message="Start an RK research run in the background and update this answer as work completes."
           cancelLabel="Not now"
-          confirmLabel="Start Math Vision Pro"
+          confirmLabel="Start RK"
           onClose={l}
           onConfirm={i}
         />
@@ -4016,7 +4016,7 @@ const xv = ({
   const Je = d.useCallback(() => {
     var ge;
     if (!le) {
-      throw new Error("This composer does not support Math Vision Pro.");
+      throw new Error("This composer does not support RK.");
     }
     le(((ge = I.current) == null ? undefined : ge.value) ?? r);
   }, [r, le, I]);

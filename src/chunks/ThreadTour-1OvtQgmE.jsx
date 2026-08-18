@@ -6603,7 +6603,7 @@ const Cc = ({
               target: W(V.composerProRun),
               title: "Pro run",
               content:
-                "Use your daily Math Vision Pro run for a deeper background analysis of a demanding prompt.",
+                "Use RK for a deeper background analysis of a demanding prompt.",
               placement: "top",
             },
           ]

@@ -1,4 +1,5 @@
 import { gaoDataset } from "../showcase/gao/data";
+import { gaoCodexArchives } from "./gaoCodexArchives";
 
 export const GAO_ORIGINAL_CHAT_ID = "gao-original-workflow";
 export const GAO_ORIGINAL_RUN_ID = "gao-original-run";
@@ -218,6 +219,25 @@ const evidenceNodes = workThreads.map((thread) => ({
   stream_updated_at: timestamp(thread.workUnit, 7),
 }));
 
+const codexArchiveNodes = gaoCodexArchives.map((thread) => ({
+  id: thread.id,
+  kind: "codex_archive",
+  label: `原始 · ${thread.nickname} · ${thread.agentPath}`,
+  subtitle: `Codex 原始可见记录节选 · ${thread.sessionId}`,
+  round_index: thread.round,
+  status: thread.status,
+  stream_reasoning: thread.summary,
+  stream_output: "",
+  stream_reasoning_truncated: false,
+  stream_output_truncated: false,
+  display_summary: thread.summary,
+  display_summary_truncated: false,
+  display_summary_is_final: true,
+  archived_messages: thread.messages,
+  stream_started_at: thread.messages[0].at,
+  stream_updated_at: thread.messages.at(-1)?.at ?? thread.messages[0].at,
+}));
+
 const workflowNodes = [
   ...traceNodes.map((node) => ({
     id: node.id,
@@ -238,6 +258,7 @@ const workflowNodes = [
     stream_updated_at: timestamp(node.round, 7),
   })),
   ...evidenceNodes,
+  ...codexArchiveNodes,
 ];
 
 const evidenceEdges = workThreads.flatMap((thread) => {
@@ -255,6 +276,11 @@ const evidenceEdges = workThreads.flatMap((thread) => {
 });
 
 const workflowEdges = [...traceEdges, ...evidenceEdges];
+const codexArchiveEdges = gaoCodexArchives.flatMap((thread) => [
+  { source: thread.sourceNode, target: thread.id, condition: null },
+  { source: thread.id, target: thread.targetNode, condition: null },
+]);
+const workflowEdgesWithArchives = [...workflowEdges, ...codexArchiveEdges];
 
 const rounds = Array.from({ length: 132 }, (_, index) => {
   const roundIndex = index + 1;
@@ -285,7 +311,7 @@ export const gaoOriginalWorkflowRun = {
   max_rounds: 132,
   chat_id: GAO_ORIGINAL_CHAT_ID,
   assistant_message_index: 1,
-  state: { files: { answer_tex: "", research_notes_tex: "" }, round_outputs: roundOutputs, rounds, workflow: { nodes: workflowNodes, edges: workflowEdges }, completed: true, last_error: null },
+  state: { files: { answer_tex: "", research_notes_tex: "" }, round_outputs: roundOutputs, rounds, workflow: { nodes: workflowNodes, edges: workflowEdgesWithArchives }, completed: true, last_error: null },
   error_message: null,
   started_at: timestamp(1),
   finished_at: timestamp(132, 12),
@@ -324,4 +350,4 @@ export const gaoOriginalWorkflowChat = {
 };
 
 export const gaoOriginalWorkflowChatSummary = { ...gaoOriginalWorkflowChat, messages: undefined, preview: "Codex 主实例、并行子实例、验证和被否决路线的静态回放。", message_count: gaoOriginalWorkflowChat.messages.length };
-export const gaoOriginalWorkflowStats = { rounds: rounds.length, nodes: workflowNodes.length, edges: workflowEdges.length, rejected: workflowNodes.filter((node) => node.status === "failed").length };
+export const gaoOriginalWorkflowStats = { rounds: rounds.length, nodes: workflowNodes.length, edges: workflowEdgesWithArchives.length, rejected: workflowNodes.filter((node) => node.status === "failed").length };

@@ -62,7 +62,7 @@ export function AssistantMessageMetadata({
       )}
       {message.proChatCall && (
         <MChip
-          label="Math Vision Pro"
+          label="RK"
           icon={<ThinkingElapsedIcon />}
           color="warning"
           variant="filled"
