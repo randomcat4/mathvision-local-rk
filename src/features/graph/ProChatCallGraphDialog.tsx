@@ -51,11 +51,18 @@ import {
   sidePanelStyles,
   ToggleButton,
   ToggleButtonGroup,
+  Tooltip,
   TooltipIconButton,
   Typography,
   useAttachmentContent,
   useTheme,
 } from "../../runtime/proChatGraphRuntime.js";
+import {
+  extractLocalMarkdownLinks,
+  localMarkdownArtifactUrl,
+  removeLocalMarkdownLinkTargets,
+  type LocalMarkdownLink,
+} from "./localMarkdownArtifacts";
 
 const archivedMessageRoleLabels: Record<ArchivedThreadMessage["role"], string> = {
   request: "任务下发",
@@ -166,32 +173,53 @@ function WorkflowNode({
       </Box>
     );
   return (
-    <Box sx={nodeStyles(node.status, selected)}>
-      <Handle type="target" position={Position.Left} />
-      <Box sx={nodeHeading}>
-        <Typography variant="graphNodeTitle" noWrap>
-          {node.label}
-        </Typography>
-        <Chip
-          label={formatWorkflowLabel(node.status)}
-          color={workflowStatusColor(node.status)}
-          size="xs"
-        />
-      </Box>
-      <Typography variant="caption" color="textSecondary" noWrap>
-        {getNodeDetail(node) || formatWorkflowLabel(node.kind)}
-      </Typography>
-      <Box sx={nodeFooter}>
+    <Tooltip
+      arrow
+      enterDelay={260}
+      placement="top"
+      title={
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 0.75, maxWidth: 360, padding: 0.5 }}>
+          <Typography variant="subtitle2">{node.label}</Typography>
+          <Typography variant="caption">
+            {node.roundIndex === null ? "运行级节点" : `第 ${node.roundIndex} 轮`} · {formatWorkflowLabel(node.status)}
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{ display: "-webkit-box", WebkitBoxOrient: "vertical", WebkitLineClamp: 4, overflow: "hidden" }}
+          >
+            {node.displaySummary || node.streamReasoning || "没有记录摘要。"}
+          </Typography>
+          <Typography variant="caption">点击查看完整记录</Typography>
+        </Box>
+      }
+    >
+      <Box sx={nodeStyles(node.status, selected)}>
+        <Handle type="target" position={Position.Left} />
+        <Box sx={nodeHeading}>
+          <Typography variant="graphNodeTitle" noWrap>
+            {node.label}
+          </Typography>
+          <Chip
+            label={formatWorkflowLabel(node.status)}
+            color={workflowStatusColor(node.status)}
+            size="xs"
+          />
+        </Box>
         <Typography variant="caption" color="textSecondary" noWrap>
-          {node.roundIndex === null ? "Run" : `Round ${node.roundIndex}`}
+          {getNodeDetail(node) || formatWorkflowLabel(node.kind)}
         </Typography>
-        {runtime && <Chip label={`Elapsed ${runtime}`} size="xs" />}
-        <Typography variant="caption" color="textSecondary" noWrap>
-          in {incomingCount} | out {outgoingCount}
-        </Typography>
+        <Box sx={nodeFooter}>
+          <Typography variant="caption" color="textSecondary" noWrap>
+            {node.roundIndex === null ? "Run" : `Round ${node.roundIndex}`}
+          </Typography>
+          {runtime && <Chip label={`Elapsed ${runtime}`} size="xs" />}
+          <Typography variant="caption" color="textSecondary" noWrap>
+            in {incomingCount} | out {outgoingCount}
+          </Typography>
+        </Box>
+        <Handle type="source" position={Position.Right} />
       </Box>
-      <Handle type="source" position={Position.Right} />
-    </Box>
+    </Tooltip>
   );
 }
 const nodeTypes = { [PRO_CHAT_WORKFLOW_NODE_TYPE]: WorkflowNode };
@@ -519,7 +547,7 @@ function NodeDetails({
             {node.label}
           </Typography>
           <Typography variant="caption" color="textSecondary" noWrap>
-            {node.id}
+            {node.kind === "codex_archive" ? `第 ${node.roundIndex} 轮子实例` : node.id}
           </Typography>
         </Box>
       </Box>
@@ -562,18 +590,12 @@ function NodeDetails({
           </Typography>
         )}
       </Box>
-      {node.kind === "compute" && (
+      {node.displaySummary.trim() && (
         <>
           <Divider />
           <Box sx={sectionStyles}>
-            <Typography variant="subtitle2">Summarized output</Typography>
-            {node.displaySummary.trim() ? (
-              <Markdown content={node.displaySummary} mode="compact" />
-            ) : (
-              <Typography variant="body2" color="textSecondary">
-                No summarized output was recorded for this step.
-              </Typography>
-            )}
+            <Typography variant="subtitle2">结果摘要</Typography>
+            <Markdown content={node.displaySummary} mode="compact" />
             {node.displaySummaryTruncated && (
               <Typography variant="caption" color="warning">
                 Earlier summary text was truncated.
@@ -616,70 +638,114 @@ function ArchivedThreadTranscript({
 }: {
   messages: ArchivedThreadMessage[];
 }) {
+  const [artifact, setArtifact] = useState<{
+    content: string;
+    error: string | null;
+    label: string;
+    loading: boolean;
+  } | null>(null);
+  const openArtifact = (link: LocalMarkdownLink) => {
+    setArtifact({ content: "", error: null, label: link.label, loading: true });
+    void fetch(localMarkdownArtifactUrl(link.path))
+      .then(async (response) => {
+        if (!response.ok) throw new Error(await response.text());
+        const content = await response.text();
+        setArtifact({ content, error: null, label: link.label, loading: false });
+      })
+      .catch((error: unknown) => {
+        setArtifact({
+          content: "",
+          error: error instanceof Error ? error.message : "无法读取这个 Markdown 文件。",
+          label: link.label,
+          loading: false,
+        });
+      });
+  };
   return (
-    <Box sx={sectionStyles}>
-      <Typography variant="subtitle2">聊天记录</Typography>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 1.5,
-          paddingBlock: 0.5,
-        }}
-      >
-        {messages.map((message) => {
-          const isRequest = message.role === "request";
-          return (
-            <Box
-              key={message.id}
-              sx={{
-                alignSelf: isRequest ? "flex-end" : "flex-start",
-                maxWidth: "92%",
-              }}
-            >
+    <>
+      <Box sx={sectionStyles}>
+        <Typography variant="subtitle2">聊天记录</Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 1.5,
+            paddingBlock: 0.5,
+          }}
+        >
+          {messages.map((message) => {
+            const isRequest = message.role === "request";
+            const markdownLinks = extractLocalMarkdownLinks(message.content);
+            return (
               <Box
+                key={message.id}
                 sx={{
-                  alignItems: "center",
-                  display: "flex",
-                  gap: 0.75,
-                  justifyContent: isRequest ? "flex-end" : "flex-start",
-                  marginBottom: 0.5,
+                  alignSelf: isRequest ? "flex-end" : "flex-start",
+                  maxWidth: "92%",
                 }}
               >
-                <Typography variant="caption" sx={{ fontWeight: 700 }}>
-                  {message.author}
-                </Typography>
-                <Typography variant="caption" color="textSecondary">
-                  {archivedMessageRoleLabels[message.role]} · {archivedMessageTime.format(new Date(message.at))}
-                </Typography>
-              </Box>
-              <Box
-                sx={(theme: any) => ({
-                  backgroundColor: isRequest
-                    ? alpha(theme.palette.primary.main, 0.12)
-                    : message.role === "review"
-                      ? alpha(theme.palette.warning.main, 0.12)
-                      : alpha(theme.palette.text.primary, 0.055),
-                  border: `1px solid ${
-                    isRequest
-                      ? alpha(theme.palette.primary.main, 0.2)
+                <Box
+                  sx={{
+                    alignItems: "center",
+                    display: "flex",
+                    gap: 0.75,
+                    justifyContent: isRequest ? "flex-end" : "flex-start",
+                    marginBottom: 0.5,
+                  }}
+                >
+                  <Typography variant="caption" sx={{ fontWeight: 700 }}>
+                    {message.author}
+                  </Typography>
+                  <Typography variant="caption" color="textSecondary">
+                    {archivedMessageRoleLabels[message.role]} · {archivedMessageTime.format(new Date(message.at))}
+                  </Typography>
+                </Box>
+                <Box
+                  sx={(theme: any) => ({
+                    backgroundColor: isRequest
+                      ? alpha(theme.palette.primary.main, 0.12)
                       : message.role === "review"
-                        ? alpha(theme.palette.warning.main, 0.22)
-                        : alpha(theme.palette.text.primary, 0.08)
-                  }`,
-                  borderRadius: 2,
-                  padding: 1.25,
-                  "& p:first-of-type": { marginTop: 0 },
-                  "& p:last-of-type": { marginBottom: 0 },
-                })}
-              >
-                <Markdown content={message.content} mode="compact" />
+                        ? alpha(theme.palette.warning.main, 0.12)
+                        : alpha(theme.palette.text.primary, 0.055),
+                    border: `1px solid ${
+                      isRequest
+                        ? alpha(theme.palette.primary.main, 0.2)
+                        : message.role === "review"
+                          ? alpha(theme.palette.warning.main, 0.22)
+                          : alpha(theme.palette.text.primary, 0.08)
+                    }`,
+                    borderRadius: 2,
+                    padding: 1.25,
+                    "& p:first-of-type": { marginTop: 0 },
+                    "& p:last-of-type": { marginBottom: 0 },
+                  })}
+                >
+                  <Markdown content={removeLocalMarkdownLinkTargets(message.content)} mode="compact" />
+                  {markdownLinks.map((link) => (
+                    <Button color="secondary" onClick={() => openArtifact(link)} key={link.path}>
+                      打开 {link.label}
+                    </Button>
+                  ))}
+                </Box>
               </Box>
-            </Box>
-          );
-        })}
+            );
+          })}
+        </Box>
       </Box>
-    </Box>
+      <Dialog open={artifact !== null} onClose={() => setArtifact(null)} fullWidth maxWidth="lg">
+        <DialogTitle>
+          <Box sx={{ alignItems: "center", display: "flex", justifyContent: "space-between", gap: 2 }}>
+            <Typography variant="subtitle1">{artifact?.label ?? "Markdown"}</Typography>
+            <Button onClick={() => setArtifact(null)}>关闭</Button>
+          </Box>
+        </DialogTitle>
+        <DialogContent dividers>
+          {artifact?.loading ? <CircularProgress size={24} /> : null}
+          {artifact?.error ? <Typography color="error">{artifact.error}</Typography> : null}
+          {artifact?.content ? <Markdown content={artifact.content} mode="compact" /> : null}
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
 export function ProChatCallGraphDialog({

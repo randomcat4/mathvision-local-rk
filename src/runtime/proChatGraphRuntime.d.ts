@@ -22,6 +22,7 @@ export const PdfCanvasViewer: ComponentType<any>;
 export const ReactFlow: ComponentType<any>;
 export const ToggleButton: ComponentType<any>;
 export const ToggleButtonGroup: ComponentType<any>;
+export const Tooltip: ComponentType<any>;
 export const TooltipIconButton: ComponentType<any>;
 export const Typography: ComponentType<any>;
 export const Position: { Left: unknown; Right: unknown };

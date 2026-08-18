@@ -222,8 +222,8 @@ const evidenceNodes = workThreads.map((thread) => ({
 const codexArchiveNodes = gaoCodexArchives.map((thread) => ({
   id: thread.id,
   kind: "codex_archive",
-  label: `原始 · ${thread.nickname} · ${thread.agentPath}`,
-  subtitle: `Codex 原始可见记录节选 · ${thread.sessionId}`,
+  label: `子实例 · ${thread.agentPath.split("/").at(-1)?.toUpperCase()}`,
+  subtitle: `子实例记录 · ${thread.agentPath.split("/").at(-1)?.toUpperCase()}`,
   round_index: thread.round,
   status: thread.status,
   stream_reasoning: thread.summary,
@@ -233,7 +233,10 @@ const codexArchiveNodes = gaoCodexArchives.map((thread) => ({
   display_summary: thread.summary,
   display_summary_truncated: false,
   display_summary_is_final: true,
-  archived_messages: thread.messages,
+  archived_messages: thread.messages.map((message) => ({
+    ...message,
+    author: `子实例 ${thread.agentPath.split("/").at(-1)?.toUpperCase()}`,
+  })),
   stream_started_at: thread.messages[0].at,
   stream_updated_at: thread.messages.at(-1)?.at ?? thread.messages[0].at,
 }));

@@ -83,7 +83,11 @@ test("adds ten separately identified real Codex visible-message archives", () =>
     (node) => node.kind === "codex_archive",
   );
   assert.equal(realArchives.length, 10);
+  assert.ok(realArchives.every((node) => node.label.startsWith("子实例 · ")));
+  assert.ok(realArchives.every((node) => !node.label.includes("原始")));
   assert.equal(new Set(realArchives.map((node) => node.subtitle)).size, 10);
-  assert.ok(realArchives.every((node) => node.subtitle.startsWith("Codex 原始可见记录")));
+  assert.ok(realArchives.every((node) => node.subtitle.startsWith("子实例记录 · ")));
+  assert.ok(realArchives.every((node) => !node.subtitle.includes("01a00")));
+  assert.ok(realArchives.every((node) => node.archived_messages?.every((message) => message.author.startsWith("子实例 "))));
   assert.ok(realArchives.every((node) => node.archived_messages?.some((message) => message.role === "final")));
 });
