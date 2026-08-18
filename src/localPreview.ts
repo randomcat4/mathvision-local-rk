@@ -1,4 +1,11 @@
 import { localRepository } from "./local/localRepository";
+import {
+  GAO_ORIGINAL_CHAT_ID,
+  GAO_ORIGINAL_RUN_ID,
+  gaoOriginalWorkflowChat,
+  gaoOriginalWorkflowChatSummary,
+  gaoOriginalWorkflowRun,
+} from "./local/gaoOriginalWorkflowFixture";
 
 const PRODUCTION_ORIGIN = "https://app.mathvision.ai";
 
@@ -27,7 +34,7 @@ function localGet(pathname: string): Response {
     return json(localRepository.snapshot());
   }
   if (pathname.endsWith("/workspace/explorer/chats")) {
-    const items = localRepository.listChats();
+    const items = [gaoOriginalWorkflowChatSummary, ...localRepository.listChats()];
     return json({ items, next_cursor: null, total_count: items.length });
   }
   if (pathname.includes("/workspace/explorer/folders/") && pathname.endsWith("/path")) {
@@ -56,13 +63,33 @@ function localGet(pathname: string): Response {
 
   if (pathname.endsWith("/chats/archived")) return json(localRepository.listChats({ archived: true }));
   if (pathname.endsWith("/chats/shared")) return json([]);
-  if (pathname.endsWith("/chats")) return json(localRepository.listChats());
+  if (pathname.endsWith("/chats")) {
+    return json([gaoOriginalWorkflowChatSummary, ...localRepository.listChats()]);
+  }
   if (pathname.endsWith("/folders")) return json(localRepository.listFolders());
 
   const chatMatch = pathname.match(/\/chats\/([^/]+)$/);
   if (chatMatch) {
-    const chat = localRepository.getChat(decodeURIComponent(chatMatch[1]));
+    const chatId = decodeURIComponent(chatMatch[1]);
+    const chat = chatId === GAO_ORIGINAL_CHAT_ID
+      ? gaoOriginalWorkflowChat
+      : localRepository.getChat(chatId);
     return chat ? json(chat) : json({ detail: "Chat not found" }, 404);
+  }
+
+  const adminHarnessMatch = pathname.match(
+    /\/users\/[^/]+\/chats\/([^/]+)\/agent-harness-runs\/([^/]+)$/,
+  );
+  if (
+    adminHarnessMatch &&
+    decodeURIComponent(adminHarnessMatch[1]) === GAO_ORIGINAL_CHAT_ID &&
+    decodeURIComponent(adminHarnessMatch[2]) === GAO_ORIGINAL_RUN_ID
+  ) {
+    return json(gaoOriginalWorkflowRun);
+  }
+  const harnessMatch = pathname.match(/\/agent-harness\/runs\/([^/]+)$/);
+  if (harnessMatch && decodeURIComponent(harnessMatch[1]) === GAO_ORIGINAL_RUN_ID) {
+    return json(gaoOriginalWorkflowRun);
   }
 
   // Empty list endpoints are enough to render the authentic empty-state shell.
@@ -83,6 +110,19 @@ async function localWrite(request: Request, pathname: string): Promise<Response>
 
   if (pathname.endsWith("/me/profile") && method === "PATCH") {
     return json(localRepository.updateProfile(body));
+  }
+  if (pathname.endsWith("/me/tour-guide") && method === "PATCH") {
+    const profile = localRepository.getProfile();
+    const currentTourGuide = typeof profile.tour_guide === "object" && profile.tour_guide
+      ? profile.tour_guide as Record<string, unknown>
+      : {};
+    const tourKey = typeof body.tour_key === "string" ? body.tour_key : "thread";
+    return json(localRepository.updateProfile({
+      tour_guide: {
+        ...currentTourGuide,
+        [tourKey]: body.completed === true,
+      },
+    }));
   }
   if (pathname.endsWith("/chats/start") && method === "POST") {
     const chatInput = typeof body.chat === "object" && body.chat ? body.chat as Record<string, unknown> : {};

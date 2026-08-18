@@ -29,6 +29,9 @@ import {
   l as xt,
 } from "./assistantStructuredResponseLazy-CCAemx3W.jsx";
 import { u as gt } from "./index-D0EP5Hzg.js";
+
+const gaoOriginalWorkflowChatId = "gao-original-workflow";
+const gaoOriginalWorkflowAdminUserId = "local-user";
 import { G as Ee, T as ft, a as Tt } from "./ThinkingElapsedLabel-DKCKD95O.js";
 import { b as _Component4 } from "./MarkdownHighlights-C-ZhT8z1.jsx";
 import { b as It, L as _Component0 } from "./TextField-D8vc_sXz.jsx";
@@ -1342,7 +1345,12 @@ const Je = a.forwardRef(
                 responseNumber={
                   (Pe = p.get(u)) == null ? undefined : Pe.responseNumber
                 }
-                proChatCallAdminUserId={w}
+                proChatCallAdminUserId={
+                  w ??
+                  (e === gaoOriginalWorkflowChatId
+                    ? gaoOriginalWorkflowAdminUserId
+                    : null)
+                }
                 shouldPrepareWriteupPdf={y && u === et}
                 isBranchTourTarget={u === K}
                 writeupPdfPreparationPriority={u}

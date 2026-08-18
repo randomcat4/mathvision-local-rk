@@ -1081,6 +1081,8 @@ const _Component6 = a.memo(dr);
 const mr = new Set();
 const hr = new Map();
 const xr = 4;
+const gaoOriginalWorkflowChatId = "gao-original-workflow";
+const gaoOriginalWorkflowAdminUserId = "local-user";
 const ke = (e) => ({
   scrollMarginBlock: e.spacing(1.4),
 });
@@ -1342,7 +1344,11 @@ const Je = a.forwardRef(
                 responseNumber={
                   (Pe = p.get(u)) == null ? undefined : Pe.responseNumber
                 }
-                proChatCallAdminUserId={w}
+                proChatCallAdminUserId={
+                  w ?? (e === gaoOriginalWorkflowChatId
+                    ? gaoOriginalWorkflowAdminUserId
+                    : null)
+                }
                 shouldPrepareWriteupPdf={y && u === et}
                 isBranchTourTarget={u === K}
                 writeupPdfPreparationPriority={u}

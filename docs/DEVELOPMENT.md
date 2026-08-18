@@ -37,11 +37,16 @@ npm run verify
 - 视图拆分：恢复视图语法检查 + 行为测试 + 生产构建。
 - 依赖或入口修改：完整 `npm run verify`。
 - RK 协议修改：除完整验证外，还需要版本冲突、结果未知和不可用状态测试。
-- Gao 回放数据或交互修改：`tests/gaoShowcase.test.ts` + 类型检查 + 生产构建 + Chrome 桌面视口验收。
+- Gao 回放数据或交互修改：`tests/gaoShowcase.test.ts`、`tests/gaoOriginalWorkflowFixture.test.ts` + 类型检查 + 生产构建 + Chrome 桌面视口验收。
 
 ## Gao 回放
 
-启动本地预览后访问 `http://127.0.0.1:4173/gao-workflow`。该页面不依赖登录态。更新数据时必须同时核对 Gao 外置状态、审计原件和 GitHub 提交时间，并保持“原始证据 / 账本重建 / 压力副本”三类分母分离。
+启动本地预览后有两个互不替代的入口：
+
+- `/gao-workflow` 保留定制的只读研究回放；
+- `/chats/gao-original-workflow` 把同一批 Gao 研究材料装进 MathVision 原版聊天、Pro 轮次卡和完整工作流图，用来观察原工作流本身的承载情况。
+
+更新数据时必须同时核对 Gao 外置状态、审计原件和 GitHub 提交时间，并保持“原始证据 / 账本重建 / 压力副本”三类分母分离。
 
 ## 文档同步
 

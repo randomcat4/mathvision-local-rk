@@ -21,6 +21,8 @@
 | `GET …/chats/archived` | 返回已归档聊天 |
 | `GET …/chats/shared` | 返回空列表 |
 | `GET …/chats/:id` | 返回本地聊天 |
+| `GET …/agent-harness/runs/:id` | 返回固定 Gao Pro 工作流运行 |
+| `GET …/users/:user/chats/:chat/agent-harness-runs/:id` | 以原版管理视图形状返回固定 Gao 运行 |
 | `GET …/folders` | 返回本地文件夹 |
 
 若 GET 请求不属于上述集合，适配器为保持页面可启动会返回空形状，并附带本地诊断字段。该行为是兼容措施，不是完整实现。
@@ -30,6 +32,7 @@
 | 请求形状 | 行为 |
 |---|---|
 | `PATCH …/me/profile` | 更新个人资料 |
+| `PATCH …/me/tour-guide` | 保存原版首次使用提示的完成状态 |
 | `POST …/chats/start` | 创建并启动本地聊天壳 |
 | `POST …/chats` | 创建聊天 |
 | `PUT …/chats/:id` | 更新聊天 |
@@ -53,4 +56,3 @@
 ```
 
 状态码为 501。真实推理、协作、分享、云端文件和 RK 命令均不在当前本地适配器能力内。
-

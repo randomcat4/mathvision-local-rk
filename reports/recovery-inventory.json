@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T21:29:41.977Z",
+  "generatedAt": "2026-08-18T03:52:47.271Z",
   "applicationCandidates": 97,
   "elevatedApplicationModules": 56,
   "recoveredProductionViews": 7,
@@ -9,6 +9,6 @@
   "frozenVendorModules": 19,
   "mixedBoundaryModules": 22,
   "remainingApplicationModules": [],
-  "strictSourceFiles": 221,
+  "strictSourceFiles": 222,
   "tsNoCheckFiles": 0
 }
