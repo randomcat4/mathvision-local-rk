@@ -6,6 +6,13 @@ import type { ResearchEdge, ResearchNode } from "./types";
 const NODE_WIDTH = 210;
 const NODE_HEIGHT = 104;
 
+export function getResearchGraphBounds(nodes: ResearchNode[]) {
+  return {
+    width: Math.max(2050, ...nodes.map((node) => node.x + NODE_WIDTH + 64)),
+    height: Math.max(800, ...nodes.map((node) => node.y + NODE_HEIGHT + 64)),
+  };
+}
+
 function edgePath(edge: ResearchEdge, nodes: Map<string, ResearchNode>): string {
   const from = nodes.get(edge.from);
   const to = nodes.get(edge.to);
@@ -46,7 +53,7 @@ const ResearchNodeView = memo(function ResearchNodeView({ node, selected, onSele
   const active = node.status === "running";
   return (
     <div className="rk-node-position" style={{ transform: `translate(${node.x}px, ${node.y}px)` }}>
-      <FlowFrame active={active} tone={node.id === "spawned" ? "cyan" : "violet"}>
+      <FlowFrame active={active}>
         <button
           type="button"
           className={`rk-node rk-node--${node.status} rk-node--${node.kind} ${selected ? "is-selected" : ""}`}
@@ -66,6 +73,12 @@ const ResearchNodeView = memo(function ResearchNodeView({ node, selected, onSele
           {active ? <span className="rk-node__progress"><span style={{ transform: `scaleX(${node.progress / 100})` }} /></span> : null}
         </button>
       </FlowFrame>
+      <div className="rk-node-preview" role="tooltip">
+        <strong>{node.title}</strong>
+        <small>第 {node.round} 轮 · {statusLabel[node.status]}</small>
+        <p>{node.reasoning}</p>
+        <span>点击查看完整记录</span>
+      </div>
     </div>
   );
 });
@@ -115,10 +128,7 @@ export function ResearchGraph({ nodes, edges, selectedNodeId, onSelect }: {
   onSelect(nodeId: string): void;
 }) {
   const nodeMap = useMemo(() => new Map(nodes.map((node) => [node.id, node])), [nodes]);
-  const bounds = useMemo(() => ({
-    width: Math.max(2050, ...nodes.map((node) => node.x + NODE_WIDTH + 64)),
-    height: Math.max(800, ...nodes.map((node) => node.y + NODE_HEIGHT + 64)),
-  }), [nodes]);
+  const bounds = useMemo(() => getResearchGraphBounds(nodes), [nodes]);
   const largeGraph = nodes.length > 80;
   return (
     <div className={`rk-graph-stage ${largeGraph ? "rk-graph-stage--large" : ""}`} style={bounds} role="group" aria-label="实时研究树">
