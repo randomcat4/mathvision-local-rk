@@ -98,6 +98,47 @@ const ZH_TEXT: Record<string, string> = {
   "Manage password and account security options.": "管理密码和账户安全选项。",
 };
 
+const GAO_ZH_TEXT: Record<string, string> = {
+  "Answer PDF did not compile.": "答案 PDF 未能编译。",
+  "Answer notes PDF (all rounds)": "答案笔记 PDF（全部轮次）",
+  "Branch": "创建分支",
+  "Branch chat": "创建聊天分支",
+  "Branch from response": "从本回复创建分支",
+  "Completed": "已完成",
+  "Current research PDF preview": "当前研究 PDF 预览",
+  "Copy original prompt": "复制原始任务",
+  "Display full graph": "查看完整工作流图",
+  "Edit chat title": "编辑聊天标题",
+  "Mark response as helpful": "标记回复有帮助",
+  "Mark response as not helpful": "标记回复无帮助",
+  "Minimize message pair": "收起本轮消息",
+  "Mode: mathvision": "模式：RK",
+  "Pro chat round history": "RK 研究轮次历史",
+  "Reasoning": "推理记录",
+  "Research notes PDF (this round)": "研究笔记 PDF（本轮）",
+  "Research notes PDF did not compile.": "研究笔记 PDF 未能编译。",
+  "Preview answer PDF": "预览答案 PDF",
+  "Preview research notes PDF": "预览研究笔记 PDF",
+  "Reveal active chat in explorer": "在资源管理器中定位当前聊天",
+  "Review models are still working on this round.": "本轮没有保存审阅模型摘要。",
+  "Review team summaries": "审阅组摘要",
+  "Round files": "本轮文件",
+  "Save response": "保存回复",
+  "Try again": "重试",
+  "User queries": "用户任务",
+};
+
+const GAO_ZH_PATTERNS: ReadonlyArray<[RegExp, (match: RegExpMatchArray) => string]> = [
+  [/^Answer (\d+)$/u, (match) => `回答 ${match[1]}`],
+  [/^Context usage (\d+)%$/u, (match) => `上下文用量 ${match[1]}%`],
+  [/^Chat actions for (.+)$/u, (match) => `${match[1]}的聊天操作`],
+  [/^Last edited (.+)$/u, (match) => `最后编辑于 ${match[1]}`],
+  [/^Question (\d+)$/u, (match) => `任务 ${match[1]}`],
+  [/^Round (\d+)$/u, (match) => `第 ${match[1]} 轮`],
+  [/^Round (\d+)\/(\d+)$/u, (match) => `第 ${match[1]}/${match[2]} 轮`],
+  [/^(\d+) of (\d+) workflow steps complete$/u, (match) => `已完成 ${match[1]}/${match[2]} 个工作流节点`],
+];
+
 const ZH_PATTERNS: ReadonlyArray<[RegExp, (match: RegExpMatchArray) => string]> = [
   [/^Theme: (.+)$/u, (match) => `主题：${translateTheme(match[1] ?? "")}`],
   [/^Choose theme\. Current theme: (.+)$/u, (match) => `选择主题。当前主题：${translateTheme(match[1] ?? "")}`],
@@ -125,6 +166,14 @@ function translateTheme(theme: string): string {
 
 export function translateUiText(text: string, language: AppLanguage): string {
   if (language === "en") return text;
+  if (typeof window !== "undefined" && window.location.pathname === "/chats/gao-original-workflow") {
+    const gaoExact = GAO_ZH_TEXT[text];
+    if (gaoExact !== undefined) return gaoExact;
+    for (const [pattern, replacement] of GAO_ZH_PATTERNS) {
+      const match = text.match(pattern);
+      if (match) return replacement(match);
+    }
+  }
   const exact = ZH_TEXT[text];
   if (exact !== undefined) return exact;
   for (const [pattern, replacement] of ZH_PATTERNS) {

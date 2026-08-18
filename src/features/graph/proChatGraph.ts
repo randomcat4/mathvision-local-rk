@@ -9,6 +9,8 @@ export interface ArchivedThreadMessage {
   role: "request" | "response" | "tool" | "review" | "commentary" | "final";
   content: string;
   at: string;
+  provenance?: "source_thread" | "source_artifact" | "workflow_record";
+  sourceLabel?: string;
 }
 
 export interface ProChatWorkflowNode {

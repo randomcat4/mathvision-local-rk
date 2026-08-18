@@ -1253,6 +1253,7 @@ const xs = ({
   var z;
   var Z;
   const d = St();
+  const isGaoWorkflow = c.runId === "gao-original-run";
   const [b, h] = o.useState(false);
   const [p, g] = o.useState(null);
   const x = t !== null;
@@ -1434,13 +1435,13 @@ const xs = ({
       <_Component sx={us}>
         {M.length > 0 && (
           <_Component10 variant="body2" color="textSecondary">
-            <b>{at}</b> of <b>{M.length}</b> workflow steps complete
+            {isGaoWorkflow ? `已完成 ${at}/${M.length} 个工作流节点` : <><b>{at}</b> of <b>{M.length}</b> workflow steps complete</>}
           </_Component10>
         )}
         <_Component sx={ms}>
           {n && (
             <_Component10 variant="caption" color="textSecondary">
-              Round {P}/{n.maxRounds}
+              {isGaoWorkflow ? `第 ${P}/${n.maxRounds} 轮` : `Round ${P}/${n.maxRounds}`}
             </_Component10>
           )}
           <G
@@ -1495,7 +1496,7 @@ const xs = ({
       {T === "failed" && <_Component17 severity="error">{X}</_Component17>}
       {Q && (
         <L size="small" color="success" endIcon={<_Component18 />} onClick={D}>
-          Display full graph
+          {isGaoWorkflow ? "查看完整工作流图" : "Display full graph"}
         </L>
       )}
       {n && (

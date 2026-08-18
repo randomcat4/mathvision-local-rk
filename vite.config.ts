@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import { fileURLToPath, URL } from "node:url";
 import { readFile } from "node:fs/promises";
 import { extname, relative, resolve } from "node:path";
+import { readGaoWorkflowSnapshot } from "./tools/gaoWorkflowStore";
 
 const productionReactPath = fileURLToPath(
   new URL("./src/runtime/reactFromProductionBundle.js", import.meta.url),
@@ -9,6 +10,30 @@ const productionReactPath = fileURLToPath(
 const localMarkdownRoot = fileURLToPath(
   new URL("../publish/zhuang-gao-cyclic-index-two/", import.meta.url),
 );
+const localRkDatabase = fileURLToPath(
+  new URL("./data/gao-workflow.sqlite", import.meta.url),
+);
+
+function localRkResearchMiddleware(request: any, response: any, next: () => void) {
+  const url = new URL(request.url ?? "/", "http://127.0.0.1");
+  if (url.pathname !== "/__local-rk/researches/gao-original-workflow") {
+    next();
+    return;
+  }
+  try {
+    const snapshot = readGaoWorkflowSnapshot(localRkDatabase);
+    response.statusCode = 200;
+    response.setHeader("Content-Type", "application/json; charset=utf-8");
+    response.setHeader("Cache-Control", "no-store");
+    response.end(JSON.stringify(snapshot));
+  } catch (error) {
+    response.statusCode = 503;
+    response.setHeader("Content-Type", "application/json; charset=utf-8");
+    response.end(JSON.stringify({
+      detail: error instanceof Error ? error.message : "无法读取本地 RK 研究数据库。",
+    }));
+  }
+}
 
 function localMarkdownMiddleware(request: any, response: any, next: () => void) {
   const url = new URL(request.url ?? "/", "http://127.0.0.1");
@@ -52,8 +77,19 @@ const localMarkdownPlugin = {
   },
 };
 
+const localRkResearchPlugin = {
+  name: "local-rk-research-store",
+  configureServer(server: any) {
+    server.middlewares.use(localRkResearchMiddleware);
+  },
+  configurePreviewServer(server: any) {
+    server.middlewares.use(localRkResearchMiddleware);
+  },
+};
+
 export default defineConfig({
   plugins: [
+    localRkResearchPlugin,
     localMarkdownPlugin,
     {
       name: "lucide-production-react-bridge",
