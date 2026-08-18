@@ -1,9 +1,12 @@
 import { gaoDataset } from "../showcase/gao/data";
 import { gaoCodexArchives } from "./gaoCodexArchives";
+import {
+  GAO_ORIGINAL_ADMIN_USER_ID,
+  GAO_ORIGINAL_CHAT_ID,
+  GAO_ORIGINAL_RUN_ID,
+} from "./gaoWorkflowContract";
 
-export const GAO_ORIGINAL_CHAT_ID = "gao-original-workflow";
-export const GAO_ORIGINAL_RUN_ID = "gao-original-run";
-export const GAO_ORIGINAL_ADMIN_USER_ID = "local-user";
+export { GAO_ORIGINAL_ADMIN_USER_ID, GAO_ORIGINAL_CHAT_ID, GAO_ORIGINAL_RUN_ID };
 
 const baseTime = Date.parse("2026-08-14T09:00:00-04:00");
 const workThreads = gaoDataset.threads.filter(

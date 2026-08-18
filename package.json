@@ -10,6 +10,7 @@
     }
   },
   "scripts": {
+    "import:gao": "tsx tools/import-gao-workflow.ts",
     "recover:chunks": "node tools/recover-chunks.mjs",
     "recover:jsx": "node tools/recover-jsx.mjs",
     "recover:names": "node tools/restore-primary-names.mjs",
@@ -43,6 +44,7 @@
     "esbuild@0.28.2": true
   },
   "dependencies": {
+    "@dagrejs/dagre": "^3.1.1",
     "axios": "1.19.0",
     "katex": "0.16.45",
     "lucide-react": "1.16.0",

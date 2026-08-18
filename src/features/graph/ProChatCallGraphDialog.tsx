@@ -80,6 +80,20 @@ const archivedMessageTime = new Intl.DateTimeFormat("zh-CN", {
   minute: "2-digit",
 });
 
+const gaoWorkflowLabels: Record<string, string> = {
+  agent_thread: "子实例线程",
+  codex_archive: "Codex 线程存档",
+  completed: "已完成",
+  evidence_thread: "证据线程",
+  failed: "失败／已否决",
+  main_instance: "主实例",
+  route_rejected: "已否决路线",
+  running: "运行中",
+};
+
+const workflowLabel = (value: string, chinese: boolean) =>
+  chinese ? (gaoWorkflowLabels[value] ?? formatWorkflowLabel(value)) : formatWorkflowLabel(value);
+
 interface RoundArtifact {
   pdfAttachmentId?: string | null;
 }
@@ -154,19 +168,20 @@ function WorkflowNode({
   selected,
 }: {
   data: {
+    chinese: boolean;
     incomingCount: number;
     node: ProChatWorkflowNode;
     outgoingCount: number;
   };
   selected: boolean;
 }) {
-  const { node, incomingCount, outgoingCount } = data;
+  const { node, incomingCount, outgoingCount, chinese } = data;
   const runtime = formatNodeRuntime(node);
   if (isContractedWorkflowNode(node))
     return (
       <Box
         sx={gateStyles(node.status)}
-        title={`${node.label} · ${formatWorkflowLabel(node.status)}`}
+        title={`${node.label} · ${workflowLabel(node.status, chinese)}`}
       >
         <Handle type="target" position={Position.Left} />
         <Handle type="source" position={Position.Right} />
@@ -181,7 +196,7 @@ function WorkflowNode({
         <Box sx={{ display: "flex", flexDirection: "column", gap: 0.75, maxWidth: 360, padding: 0.5 }}>
           <Typography variant="subtitle2">{node.label}</Typography>
           <Typography variant="caption">
-            {node.roundIndex === null ? "运行级节点" : `第 ${node.roundIndex} 轮`} · {formatWorkflowLabel(node.status)}
+            {node.roundIndex === null ? "运行级节点" : `第 ${node.roundIndex} 轮`} · {workflowLabel(node.status, chinese)}
           </Typography>
           <Typography
             variant="body2"
@@ -200,21 +215,23 @@ function WorkflowNode({
             {node.label}
           </Typography>
           <Chip
-            label={formatWorkflowLabel(node.status)}
+            label={workflowLabel(node.status, chinese)}
             color={workflowStatusColor(node.status)}
             size="xs"
           />
         </Box>
         <Typography variant="caption" color="textSecondary" noWrap>
-          {getNodeDetail(node) || formatWorkflowLabel(node.kind)}
+          {getNodeDetail(node) || workflowLabel(node.kind, chinese)}
         </Typography>
         <Box sx={nodeFooter}>
           <Typography variant="caption" color="textSecondary" noWrap>
-            {node.roundIndex === null ? "Run" : `Round ${node.roundIndex}`}
+            {chinese
+              ? (node.roundIndex === null ? "运行" : `第 ${node.roundIndex} 轮`)
+              : (node.roundIndex === null ? "Run" : `Round ${node.roundIndex}`)}
           </Typography>
-          {runtime && <Chip label={`Elapsed ${runtime}`} size="xs" />}
+          {runtime && <Chip label={chinese ? `用时 ${runtime}` : `Elapsed ${runtime}`} size="xs" />}
           <Typography variant="caption" color="textSecondary" noWrap>
-            in {incomingCount} | out {outgoingCount}
+            {chinese ? `入 ${incomingCount}｜出 ${outgoingCount}` : `in ${incomingCount} | out ${outgoingCount}`}
           </Typography>
         </Box>
         <Handle type="source" position={Position.Right} />
@@ -226,6 +243,7 @@ const nodeTypes = { [PRO_CHAT_WORKFLOW_NODE_TYPE]: WorkflowNode };
 function createGraphNodes(
   nodes: ProChatWorkflowNode[],
   edges: ProChatWorkflowEdge[],
+  chinese: boolean,
 ) {
   const contracted = contractReviewGates(nodes, edges);
   const sizes = new Map(
@@ -256,6 +274,7 @@ function createGraphNodes(
       sourcePosition: Position.Right,
       targetPosition: Position.Left,
       data: {
+        chinese,
         node,
         incomingCount: layout.incomingCounts.get(node.id) ?? 0,
         outgoingCount: layout.outgoingCounts.get(node.id) ?? 0,
@@ -301,9 +320,11 @@ function Metric({ label, value }: { label: string; value: string | number }) {
 }
 function PdfPreview({
   attachmentId,
+  chinese,
   title,
 }: {
   attachmentId: string | null;
+  chinese: boolean;
   title: string;
 }) {
   const attachment = useAttachmentContent(attachmentId);
@@ -325,10 +346,10 @@ function PdfPreview({
           }
         >
           <PdfCanvasViewer
-            ariaLabel={`Current search ${title} preview`}
-            loadErrorMessage={`Could not load the round ${title.toLowerCase()}.`}
+            ariaLabel={chinese ? `${title}预览` : `Current search ${title} preview`}
+            loadErrorMessage={chinese ? `无法加载本轮${title}。` : `Could not load the round ${title.toLowerCase()}.`}
             pdfUrl={attachment.objectUrl}
-            renderErrorMessage={`Could not render the round ${title.toLowerCase()}.`}
+            renderErrorMessage={chinese ? `无法渲染本轮${title}。` : `Could not render the round ${title.toLowerCase()}.`}
             scale={1}
             sx={{ height: "100%" }}
           />
@@ -352,21 +373,23 @@ function PdfPreview({
         color={attachment.error ? "error" : "textSecondary"}
         align="center"
       >
-        {!attachmentId && "No current research PDF is available."}
+        {!attachmentId && (chinese ? "没有可用的当前研究 PDF。" : "No current research PDF is available.")}
         {attachmentId &&
           attachment.error &&
-          `Could not load the current research ${title.toLowerCase()}.`}
+          (chinese ? `无法加载当前研究${title}。` : `Could not load the current research ${title.toLowerCase()}.`)}
         {attachmentId &&
           !attachment.error &&
-          `Preparing the current research ${title.toLowerCase()} preview...`}
+          (chinese ? `正在准备当前研究${title}预览……` : `Preparing the current research ${title.toLowerCase()} preview...`)}
       </Typography>
     </Box>
   );
 }
 function CurrentResearchPdfs({
+  chinese,
   roundIndex,
   roundOutput,
 }: {
+  chinese: boolean;
   roundIndex: number | null;
   roundOutput?: RoundOutput;
 }) {
@@ -381,18 +404,18 @@ function CurrentResearchPdfs({
   if (roundIndex === null)
     return (
       <Box sx={sectionStyles}>
-        <Typography variant="subtitle2">Current research PDFs</Typography>
+        <Typography variant="subtitle2">{chinese ? "当前研究 PDF" : "Current research PDFs"}</Typography>
         <Typography variant="body2" color="textSecondary">
-          PDF downloads are available for current research workflow steps.
+          {chinese ? "当前研究步骤可提供 PDF 下载。" : "PDF downloads are available for current research workflow steps."}
         </Typography>
       </Box>
     );
   if (!roundOutput)
     return (
       <Box sx={sectionStyles}>
-        <Typography variant="subtitle2">Current research PDFs</Typography>
+        <Typography variant="subtitle2">{chinese ? "当前研究 PDF" : "Current research PDFs"}</Typography>
         <Typography variant="body2" color="textSecondary">
-          PDFs for current research are not available yet.
+          {chinese ? "当前研究 PDF 尚不可用。" : "PDFs for current research are not available yet."}
         </Typography>
       </Box>
     );
@@ -402,7 +425,7 @@ function CurrentResearchPdfs({
       ? roundOutput.artifacts.answerTex
       : roundOutput.artifacts.researchNotesTex;
     const attachment = answerKind ? answer : notes;
-    const label = answerKind ? "Answer PDF" : "Research notes PDF";
+    const label = answerKind ? (chinese ? "答案 PDF" : "Answer PDF") : (chinese ? "研究笔记 PDF" : "Research notes PDF");
     if (!artifact.pdfAttachmentId)
       throw new Error(`${label} attachment is unavailable.`);
     setError(null);
@@ -413,23 +436,23 @@ function CurrentResearchPdfs({
       const link = document.createElement("a");
       link.href = url;
       link.download = answerKind
-        ? `math-vision-pro-round-${roundIndex}-answer.pdf`
-        : `math-vision-pro-round-${roundIndex}-research-notes.pdf`;
+        ? `${chinese ? "rk" : "math-vision-pro"}-round-${roundIndex}-answer.pdf`
+        : `${chinese ? "rk" : "math-vision-pro"}-round-${roundIndex}-research-notes.pdf`;
       document.body.appendChild(link);
       link.click();
       link.remove();
       window.setTimeout(() => URL.revokeObjectURL(url), 0);
     } catch {
-      setError(`Could not download ${label}.`);
+      setError(chinese ? `无法下载${label}。` : `Could not download ${label}.`);
     } finally {
       setDownloading(null);
     }
   };
   const previewId = view === "answer" ? answerId : notesId;
-  const title = view === "answer" ? "Answer PDF" : "Research notes PDF";
+  const title = view === "answer" ? (chinese ? "答案 PDF" : "Answer PDF") : (chinese ? "研究笔记 PDF" : "Research notes PDF");
   return (
     <Box sx={sectionStyles}>
-      <Typography variant="subtitle2">Current research PDFs</Typography>
+      <Typography variant="subtitle2">{chinese ? "当前研究 PDF" : "Current research PDFs"}</Typography>
       <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         <ToggleButtonGroup
           exclusive
@@ -445,14 +468,14 @@ function CurrentResearchPdfs({
             disabled={!answerId}
             aria-label="Preview answer PDF"
           >
-            Answer PDF
+            {chinese ? "答案 PDF" : "Answer PDF"}
           </ToggleButton>
           <ToggleButton
             value="researchNotes"
             disabled={!notesId}
             aria-label="Preview research notes PDF"
           >
-            Research notes PDF
+            {chinese ? "研究笔记 PDF" : "Research notes PDF"}
           </ToggleButton>
         </ToggleButtonGroup>
         <Box sx={{ display: "flex", gap: 1 }}>
@@ -464,8 +487,8 @@ function CurrentResearchPdfs({
             startIcon={<DownloadIcon />}
           >
             {downloading === "answer"
-              ? "Downloading..."
-              : "Download answer PDF"}
+              ? (chinese ? "下载中……" : "Downloading...")
+              : (chinese ? "下载答案 PDF" : "Download answer PDF")}
           </Button>
           <Button
             size="small"
@@ -475,20 +498,20 @@ function CurrentResearchPdfs({
             startIcon={<DownloadNotesIcon />}
           >
             {downloading === "researchNotes"
-              ? "Downloading..."
-              : "Download research notes PDF"}
+              ? (chinese ? "下载中……" : "Downloading...")
+              : (chinese ? "下载研究笔记 PDF" : "Download research notes PDF")}
           </Button>
         </Box>
       </Box>
-      <PdfPreview attachmentId={previewId ?? null} title={title} />
+      <PdfPreview attachmentId={previewId ?? null} chinese={chinese} title={title} />
       {!answerId && (
         <Typography variant="body2" color="error">
-          Answer PDF did not compile.
+          {chinese ? "答案 PDF 未能编译。" : "Answer PDF did not compile."}
         </Typography>
       )}
       {!notesId && (
         <Typography variant="body2" color="error">
-          Research notes PDF did not compile.
+          {chinese ? "研究笔记 PDF 未能编译。" : "Research notes PDF did not compile."}
         </Typography>
       )}
       {error && (
@@ -500,12 +523,14 @@ function CurrentResearchPdfs({
   );
 }
 function NodeDetails({
+  chinese,
   node,
   onSelectNode,
   run,
   edges,
   nodes,
 }: {
+  chinese: boolean;
   node: ProChatWorkflowNode | null;
   onSelectNode(id: string): void;
   run: ProChatRun;
@@ -519,10 +544,11 @@ function NodeDetails({
   if (!node)
     return (
       <Box sx={sidePanelStyles}>
-        <Typography variant="subtitle1">Highlighted workflow step</Typography>
+        <Typography variant="subtitle1">{chinese ? "当前工作流节点" : "Highlighted workflow step"}</Typography>
         <Typography variant="body2" color="textSecondary">
-          Select a graph node to inspect its streamed reasoning and download
-          current research PDFs.
+          {chinese
+            ? "选择一个图节点，查看其聊天记录、推理、结果及上下游。"
+            : "Select a graph node to inspect its streamed reasoning and download current research PDFs."}
         </Typography>
       </Box>
     );
@@ -552,16 +578,16 @@ function NodeDetails({
         </Box>
       </Box>
       <Box sx={{ display: "flex", "& > *": { flex: 1 }, gap: 1 }}>
-        <Metric label="Kind" value={formatWorkflowLabel(node.kind)} />
-        <Metric label="Status" value={formatWorkflowLabel(node.status)} />
-        <Metric label="Round" value={node.roundIndex ?? "run"} />
-        {runtime && <Metric label="Runtime" value={runtime} />}
+        <Metric label={chinese ? "类型" : "Kind"} value={workflowLabel(node.kind, chinese)} />
+        <Metric label={chinese ? "状态" : "Status"} value={workflowLabel(node.status, chinese)} />
+        <Metric label={chinese ? "轮次" : "Round"} value={node.roundIndex ?? (chinese ? "运行" : "run")} />
+        {runtime && <Metric label={chinese ? "用时" : "Runtime"} value={runtime} />}
       </Box>
       {detail && (
         <>
           <Divider />
           <Box sx={sectionStyles}>
-            <Typography variant="subtitle2">Step detail</Typography>
+            <Typography variant="subtitle2">{chinese ? "节点详情" : "Step detail"}</Typography>
             <Typography variant="body2" color="textSecondary">
               {detail}
             </Typography>
@@ -576,17 +602,17 @@ function NodeDetails({
       ) : null}
       <Divider />
       <Box sx={sectionStyles}>
-        <Typography variant="subtitle2">Streamed reasoning</Typography>
+        <Typography variant="subtitle2">{chinese ? "推理记录" : "Streamed reasoning"}</Typography>
         {node.streamReasoning.trim() ? (
           <Markdown content={node.streamReasoning} mode="compact" />
         ) : (
           <Typography variant="body2" color="textSecondary">
-            No streamed reasoning was recorded for this step.
+            {chinese ? "这个节点没有保存推理记录。" : "No streamed reasoning was recorded for this step."}
           </Typography>
         )}
         {node.streamReasoningTruncated && (
           <Typography variant="caption" color="warning">
-            Earlier reasoning was truncated.
+            {chinese ? "较早的推理内容已截断。" : "Earlier reasoning was truncated."}
           </Typography>
         )}
       </Box>
@@ -598,7 +624,7 @@ function NodeDetails({
             <Markdown content={node.displaySummary} mode="compact" />
             {node.displaySummaryTruncated && (
               <Typography variant="caption" color="warning">
-                Earlier summary text was truncated.
+                {chinese ? "较早的摘要内容已截断。" : "Earlier summary text was truncated."}
               </Typography>
             )}
           </Box>
@@ -606,13 +632,14 @@ function NodeDetails({
       )}
       <Divider />
       <CurrentResearchPdfs
+        chinese={chinese}
         roundIndex={node.roundIndex}
         roundOutput={output}
         key={node.roundIndex ?? "run"}
       />
       <Divider />
       <Box sx={sectionStyles}>
-        <Typography variant="subtitle2">Connected workflow steps</Typography>
+        <Typography variant="subtitle2">{chinese ? "上下游节点" : "Connected workflow steps"}</Typography>
         {connected.map((item) => (
           <Button
             color="secondary"
@@ -620,12 +647,12 @@ function NodeDetails({
             onClick={() => onSelectNode(item.id)}
             key={item.id}
           >
-            {item.label} · {formatWorkflowLabel(item.status)}
+            {item.label} · {workflowLabel(item.status, chinese)}
           </Button>
         ))}
         {connected.length === 0 && (
           <Typography variant="body2" color="textSecondary">
-            No connected workflow steps.
+            {chinese ? "没有相连的工作流节点。" : "No connected workflow steps."}
           </Typography>
         )}
       </Box>
@@ -638,6 +665,9 @@ function ArchivedThreadTranscript({
 }: {
   messages: ArchivedThreadMessage[];
 }) {
+  const onlyWorkflowRecords = messages.every(
+    (message) => message.provenance === "workflow_record",
+  );
   const [artifact, setArtifact] = useState<{
     content: string;
     error: string | null;
@@ -664,7 +694,9 @@ function ArchivedThreadTranscript({
   return (
     <>
       <Box sx={sectionStyles}>
-        <Typography variant="subtitle2">聊天记录</Typography>
+        <Typography variant="subtitle2">
+          {onlyWorkflowRecords ? "相关研究思路" : "原始记录与相关思路"}
+        </Typography>
         <Box
           sx={{
             display: "flex",
@@ -684,6 +716,16 @@ function ArchivedThreadTranscript({
                   maxWidth: "92%",
                 }}
               >
+                <Typography variant="caption" color="textSecondary">
+                  {message.provenance === "source_thread"
+                    ? "原始线程"
+                    : message.provenance === "source_artifact"
+                      ? "原始工件"
+                      : message.provenance === "workflow_record"
+                        ? "账本整理"
+                        : "存档记录"}
+                  {message.sourceLabel ? ` · ${message.sourceLabel}` : ""}
+                </Typography>
                 <Box
                   sx={{
                     alignItems: "center",
@@ -760,14 +802,15 @@ export function ProChatCallGraphDialog({
   run: ProChatRun;
 }) {
   const theme = useTheme();
+  const chinese = run.id === "gao-original-run";
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const graph = useMemo(
     () => contractReviewGates(run.state.workflowNodes, run.state.workflowEdges),
     [run.state.workflowNodes, run.state.workflowEdges],
   );
   const nodes = useMemo(
-    () => createGraphNodes(graph.nodes, graph.edges),
-    [graph.nodes, graph.edges],
+    () => createGraphNodes(graph.nodes, graph.edges, chinese),
+    [graph.nodes, graph.edges, chinese],
   );
   const edges = useMemo(
     () => createGraphEdges(graph.nodes, graph.edges, theme),
@@ -806,17 +849,18 @@ export function ProChatCallGraphDialog({
       <DialogTitle sx={dialogTitleStyles}>
         <Box sx={dialogTitleCopyStyles}>
           <Typography variant="subtitle1" noWrap>
-            RK research workflow
+            {chinese ? "RK 研究工作流" : "RK research workflow"}
           </Typography>
           <Typography variant="caption" color="textSecondary" noWrap>
-            RK run message index {messageIndex} · {nodes.length}{" "}
-            workflow steps · {edges.length} connections
+            {chinese
+              ? `RK 运行 · 消息 ${messageIndex} · ${nodes.length} 个节点 · ${edges.length} 条连接`
+              : `RK run message index ${messageIndex} · ${nodes.length} workflow steps · ${edges.length} connections`}
           </Typography>
         </Box>
         <Box sx={dialogTitleActionsStyles}>
           <TooltipIconButton
-            tooltip="Close"
-            aria-label="Close Pro call workflow graph"
+            tooltip={chinese ? "关闭" : "Close"}
+            aria-label={chinese ? "关闭 RK 研究工作流" : "Close Pro call workflow graph"}
             size="small"
             onClick={onClose}
           >
@@ -831,7 +875,7 @@ export function ProChatCallGraphDialog({
           {nodes.length === 0 && (
             <Box sx={graphStateStyles}>
               <Typography variant="body2" color="textSecondary">
-                No workflow graph is available for this Pro call yet.
+                {chinese ? "当前还没有可用的研究工作流图。" : "No workflow graph is available for this Pro call yet."}
               </Typography>
             </Box>
           )}
@@ -857,6 +901,7 @@ export function ProChatCallGraphDialog({
           )}
         </Box>
         <NodeDetails
+          chinese={chinese}
           node={selected}
           run={run}
           onSelectNode={setSelectedId}

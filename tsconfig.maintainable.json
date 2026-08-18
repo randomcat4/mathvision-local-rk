@@ -19,6 +19,8 @@
     "src/localPreview.ts",
     "src/showcase/**/*.ts",
     "src/showcase/**/*.tsx",
+    "src/rk/**/*.ts",
+    "src/rk/**/*.tsx",
     "src/shared/**/*.ts",
     "src/compat/**/*.ts",
     "tests/**/*.ts"

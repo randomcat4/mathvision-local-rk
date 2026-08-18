@@ -2,10 +2,8 @@ import { localRepository } from "./local/localRepository";
 import {
   GAO_ORIGINAL_CHAT_ID,
   GAO_ORIGINAL_RUN_ID,
-  gaoOriginalWorkflowChat,
-  gaoOriginalWorkflowChatSummary,
-  gaoOriginalWorkflowRun,
-} from "./local/gaoOriginalWorkflowFixture";
+  type GaoWorkflowSnapshot,
+} from "./local/gaoWorkflowContract";
 
 const PRODUCTION_ORIGIN = "https://app.mathvision.ai";
 
@@ -29,12 +27,28 @@ async function requestBody(request: Request): Promise<Record<string, unknown>> {
   }
 }
 
-function localGet(pathname: string): Response {
+let gaoWorkflowSnapshotPromise: Promise<GaoWorkflowSnapshot> | undefined;
+
+async function loadGaoWorkflowSnapshot(nativeFetch: typeof window.fetch): Promise<GaoWorkflowSnapshot> {
+  gaoWorkflowSnapshotPromise ??= nativeFetch("/__local-rk/researches/gao-original-workflow", {
+    cache: "no-store",
+  }).then(async (response) => {
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({})) as { detail?: string };
+      throw new Error(error.detail ?? "无法读取本地 RK 研究数据库。");
+    }
+    return response.json() as Promise<GaoWorkflowSnapshot>;
+  });
+  return gaoWorkflowSnapshotPromise;
+}
+
+async function localGet(pathname: string, nativeFetch: typeof window.fetch): Promise<Response> {
   if (pathname.endsWith("/workspace/explorer/snapshot")) {
     return json(localRepository.snapshot());
   }
   if (pathname.endsWith("/workspace/explorer/chats")) {
-    const items = [gaoOriginalWorkflowChatSummary, ...localRepository.listChats()];
+    const { chatSummary } = await loadGaoWorkflowSnapshot(nativeFetch);
+    const items = [chatSummary, ...localRepository.listChats()];
     return json({ items, next_cursor: null, total_count: items.length });
   }
   if (pathname.includes("/workspace/explorer/folders/") && pathname.endsWith("/path")) {
@@ -64,7 +78,8 @@ function localGet(pathname: string): Response {
   if (pathname.endsWith("/chats/archived")) return json(localRepository.listChats({ archived: true }));
   if (pathname.endsWith("/chats/shared")) return json([]);
   if (pathname.endsWith("/chats")) {
-    return json([gaoOriginalWorkflowChatSummary, ...localRepository.listChats()]);
+    const { chatSummary } = await loadGaoWorkflowSnapshot(nativeFetch);
+    return json([chatSummary, ...localRepository.listChats()]);
   }
   if (pathname.endsWith("/folders")) return json(localRepository.listFolders());
 
@@ -72,7 +87,7 @@ function localGet(pathname: string): Response {
   if (chatMatch) {
     const chatId = decodeURIComponent(chatMatch[1]);
     const chat = chatId === GAO_ORIGINAL_CHAT_ID
-      ? gaoOriginalWorkflowChat
+      ? (await loadGaoWorkflowSnapshot(nativeFetch)).chat
       : localRepository.getChat(chatId);
     return chat ? json(chat) : json({ detail: "Chat not found" }, 404);
   }
@@ -85,11 +100,11 @@ function localGet(pathname: string): Response {
     decodeURIComponent(adminHarnessMatch[1]) === GAO_ORIGINAL_CHAT_ID &&
     decodeURIComponent(adminHarnessMatch[2]) === GAO_ORIGINAL_RUN_ID
   ) {
-    return json(gaoOriginalWorkflowRun);
+    return json((await loadGaoWorkflowSnapshot(nativeFetch)).run);
   }
   const harnessMatch = pathname.match(/\/agent-harness\/runs\/([^/]+)$/);
   if (harnessMatch && decodeURIComponent(harnessMatch[1]) === GAO_ORIGINAL_RUN_ID) {
-    return json(gaoOriginalWorkflowRun);
+    return json((await loadGaoWorkflowSnapshot(nativeFetch)).run);
   }
 
   // Empty list endpoints are enough to render the authentic empty-state shell.
@@ -188,7 +203,7 @@ export function installLocalPreviewNetwork(): void {
     if (url.origin !== PRODUCTION_ORIGIN || !url.pathname.startsWith("/api/v1")) {
       return nativeFetch(input, init);
     }
-    if (request.method.toUpperCase() === "GET") return localGet(url.pathname);
+    if (request.method.toUpperCase() === "GET") return localGet(url.pathname, nativeFetch);
     return localWrite(request, url.pathname);
   };
 }
