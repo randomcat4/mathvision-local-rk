@@ -165,13 +165,11 @@ const evidenceEdges = workThreads.flatMap((thread) => {
   if (!phase) return [];
   const nodeId = `ledger-${thread.id}`;
   return [
-    { source: phase.source, target: nodeId, condition: "parallel ledger work unit" },
+    { source: phase.source, target: nodeId, condition: null },
     {
       source: nodeId,
       target: phase.target,
-      condition: thread.status === "已证伪" || thread.status === "提示错误"
-        ? "rejected; ledger unchanged"
-        : thread.status === "开放" ? "exact blocker retained" : "evidence accepted at stated scope",
+      condition: null,
     },
   ];
 });

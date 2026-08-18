@@ -50,6 +50,10 @@ test("fans the main instance out to isolated agents and preserves rejected route
   assert.ok(workflow.nodes.some((node) => node.id === "mixed-reject" && node.status === "failed"));
   assert.ok(workflow.nodes.some((node) => node.id === "reducible-reject" && node.status === "failed"));
   assert.ok(workflow.edges.length > workflow.nodes.length - 1);
+  assert.equal(
+    workflow.edges.some((edge) => edge.condition === "parallel ledger work unit"),
+    false,
+  );
 });
 
 test("keeps every workflow edge endpoint inside the fixture graph", () => {
