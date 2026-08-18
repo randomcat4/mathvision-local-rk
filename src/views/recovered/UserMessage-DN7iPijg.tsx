@@ -493,6 +493,7 @@ const Ne = (t) => ({
   displaySummary: t.display_summary,
   displaySummaryTruncated: t.display_summary_truncated,
   displaySummaryIsFinal: t.display_summary_is_final,
+  archivedMessages: t.archived_messages,
   streamStartedAt: t.stream_started_at,
   streamUpdatedAt: t.stream_updated_at,
 });

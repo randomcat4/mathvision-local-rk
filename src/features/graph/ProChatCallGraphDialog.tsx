@@ -8,6 +8,7 @@ import {
   formatWorkflowLabel,
   isContractedWorkflowNode,
   workflowStatusColor,
+  type ArchivedThreadMessage,
   type ProChatWorkflowEdge,
   type ProChatWorkflowNode,
 } from "./proChatGraph";
@@ -55,6 +56,20 @@ import {
   useAttachmentContent,
   useTheme,
 } from "../../runtime/proChatGraphRuntime.js";
+
+const archivedMessageRoleLabels: Record<ArchivedThreadMessage["role"], string> = {
+  request: "任务下发",
+  response: "回复",
+  tool: "运行回传",
+  review: "审计裁决",
+};
+
+const archivedMessageTime = new Intl.DateTimeFormat("zh-CN", {
+  month: "2-digit",
+  day: "2-digit",
+  hour: "2-digit",
+  minute: "2-digit",
+});
 
 interface RoundArtifact {
   pdfAttachmentId?: string | null;
@@ -523,6 +538,12 @@ function NodeDetails({
           </Box>
         </>
       )}
+      {node.archivedMessages?.length ? (
+        <>
+          <Divider />
+          <ArchivedThreadTranscript messages={node.archivedMessages} />
+        </>
+      ) : null}
       <Divider />
       <Box sx={sectionStyles}>
         <Typography variant="subtitle2">Streamed reasoning</Typography>
@@ -583,6 +604,78 @@ function NodeDetails({
             No connected workflow steps.
           </Typography>
         )}
+      </Box>
+    </Box>
+  );
+}
+
+function ArchivedThreadTranscript({
+  messages,
+}: {
+  messages: ArchivedThreadMessage[];
+}) {
+  return (
+    <Box sx={sectionStyles}>
+      <Typography variant="subtitle2">聊天记录</Typography>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 1.5,
+          paddingBlock: 0.5,
+        }}
+      >
+        {messages.map((message) => {
+          const isRequest = message.role === "request";
+          return (
+            <Box
+              key={message.id}
+              sx={{
+                alignSelf: isRequest ? "flex-end" : "flex-start",
+                maxWidth: "92%",
+              }}
+            >
+              <Box
+                sx={{
+                  alignItems: "center",
+                  display: "flex",
+                  gap: 0.75,
+                  justifyContent: isRequest ? "flex-end" : "flex-start",
+                  marginBottom: 0.5,
+                }}
+              >
+                <Typography variant="caption" sx={{ fontWeight: 700 }}>
+                  {message.author}
+                </Typography>
+                <Typography variant="caption" color="textSecondary">
+                  {archivedMessageRoleLabels[message.role]} · {archivedMessageTime.format(new Date(message.at))}
+                </Typography>
+              </Box>
+              <Box
+                sx={(theme: any) => ({
+                  backgroundColor: isRequest
+                    ? alpha(theme.palette.primary.main, 0.12)
+                    : message.role === "review"
+                      ? alpha(theme.palette.warning.main, 0.12)
+                      : alpha(theme.palette.text.primary, 0.055),
+                  border: `1px solid ${
+                    isRequest
+                      ? alpha(theme.palette.primary.main, 0.2)
+                      : message.role === "review"
+                        ? alpha(theme.palette.warning.main, 0.22)
+                        : alpha(theme.palette.text.primary, 0.08)
+                  }`,
+                  borderRadius: 2,
+                  padding: 1.25,
+                  "& p:first-of-type": { marginTop: 0 },
+                  "& p:last-of-type": { marginBottom: 0 },
+                })}
+              >
+                <Markdown content={message.content} mode="compact" />
+              </Box>
+            </Box>
+          );
+        })}
       </Box>
     </Box>
   );

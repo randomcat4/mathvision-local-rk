@@ -63,3 +63,13 @@ test("keeps every workflow edge endpoint inside the fixture graph", () => {
     assert.ok(ids.has(edge.target));
   }
 });
+
+test("adds a bounded twelve-node archived chat preview", () => {
+  const archivedNodes = gaoOriginalWorkflowRun.state.workflow.nodes.filter(
+    (node) => node.archived_messages !== undefined,
+  );
+  assert.equal(archivedNodes.length, 12);
+  assert.ok(archivedNodes.every((node) => (node.archived_messages?.length ?? 0) >= 2));
+  assert.ok(archivedNodes.some((node) => node.id === "mixed-reject" && node.status === "failed"));
+  assert.ok(archivedNodes.some((node) => node.id === "main-final"));
+});

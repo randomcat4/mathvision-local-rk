@@ -3,6 +3,14 @@ export const PRO_CHAT_NODE_WIDTH = 248;
 export const PRO_CHAT_NODE_HEIGHT = 136;
 export const PRO_CHAT_GATE_SIZE = 16;
 
+export interface ArchivedThreadMessage {
+  id: string;
+  author: string;
+  role: "request" | "response" | "tool" | "review";
+  content: string;
+  at: string;
+}
+
 export interface ProChatWorkflowNode {
   id: string;
   kind: string;
@@ -14,6 +22,7 @@ export interface ProChatWorkflowNode {
   streamReasoningTruncated?: boolean;
   displaySummary: string;
   displaySummaryTruncated?: boolean;
+  archivedMessages?: ArchivedThreadMessage[];
   [key: string]: unknown;
 }
 export interface ProChatWorkflowEdge {

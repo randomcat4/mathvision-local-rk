@@ -21,6 +21,84 @@ interface TraceNode {
   status?: "completed" | "failed";
 }
 
+type ArchivedMessageRole = "request" | "response" | "tool" | "review";
+interface ArchivedMessageSeed {
+  author: string;
+  role: ArchivedMessageRole;
+  content: string;
+  offset?: number;
+}
+
+const archivedChatSeeds: Record<string, ArchivedMessageSeed[]> = {
+  "main-freeze": [
+    { author: "用户", role: "request", content: "持续研究冻结的 Gao 循环指数二问题。主实例负责证据边界和路线裁决；各子实例隔离并行，失败路线必须保留。" },
+    { author: "MAIN", role: "response", content: "已冻结命题与证据等级。现在并行下发四路：U132 整合审计、U131 缺失证明重建、U127 定点修补、有限端点独立复算。", offset: 3 },
+  ],
+  "pro1-u132-audit": [
+    { author: "MAIN", role: "request", content: "从零审计 U132 的整合链。不得根据编号猜结论；逐条核对 U109、U115、U121 是否足以推出目标。" },
+    { author: "PRO-1", role: "response", content: "首轮不能通过。U115 到奇层实现之间缺少一个承重接口，U121 的 companion 使用范围也没有写进冻结前提。", offset: 4 },
+    { author: "MAIN", role: "review", content: "收到。U132 暂不晋升；把两处缺口写成精确补件清单后退回。", offset: 7 },
+  ],
+  "pro2-u131": [
+    { author: "MAIN", role: "request", content: "规范工件缺少 U131 正文。请从冻结定义重建自包含证明，并标出所有外部依赖。" },
+    { author: "PRO-2", role: "response", content: "已确认不是单纯漏链。重建稿把四反射 odd–odd residual 分成两个可独立闭合的容量情形；只引用已经冻结的 L43 与有限端点表。", offset: 5 },
+    { author: "PRO-2", role: "response", content: "结论严格限于一旋转四反射支路，不能外推 Gao 母题。", offset: 8 },
+  ],
+  "sub1-u127": [
+    { author: "MAIN", role: "request", content: "只修 U127 审计指出的三个位置：量词顺序、偶层提升符号、最后一次容量闭合。不要改命题。" },
+    { author: "SUB-1", role: "response", content: "三个位置已逐项修复。第三处需要显式保留 occurrence label；若把标签忘掉，闭合会把两个不同反射对误并。", offset: 5 },
+    { author: "MAIN", role: "review", content: "修订包送匿名验证，作者线程不自行盖章。", offset: 7 },
+  ],
+  "sub2-finite": [
+    { author: "MAIN", role: "request", content: "独立复算 m=11 以及 m=13,15,21 的冻结有限余区。输出命中数和哈希；有限成功不得外推无限参数。" },
+    { author: "SUB-2", role: "tool", content: "枚举完成：四组冻结输入均未发现反例；结果表与运行日志哈希一致。", offset: 5 },
+    { author: "SUB-2", role: "response", content: "这只是有限证书。它支持当前局部分支，但不能替代统一证明。", offset: 7 },
+  ],
+  "pro1-u132-r2": [
+    { author: "MAIN", role: "request", content: "缺失证据已经补齐。请重新审计 U132，但只裁决整合链，不重新证明各子引理。" },
+    { author: "PRO-1", role: "response", content: "复审结论：CORRECT_INTEGRATION。两处承重接口现在都有独立证据，量词和参数范围一致。", offset: 5 },
+    { author: "PRO-1", role: "review", content: "允许晋升严格局部分支；不允许写成 Gao 全证明。", offset: 7 },
+  ],
+  "main-l46": [
+    { author: "PRO-1 / PRO-2 / SUB-1 / SUB-2", role: "response", content: "四路材料已经返回：整合复审通过、缺失证明重建完成、U127 匿名验证通过、有限端点复算无冲突。" },
+    { author: "MAIN", role: "review", content: "晋升 L46：一旋转四反射 odd–odd residual 闭合。Gao 母题继续标记 UNRESOLVED_WITH_EXACT_BLOCKER。", offset: 6 },
+  ],
+  "kuniform": [
+    { author: "MAIN", role: "request", content: "尝试统一处理所有奇数 k≥9，目标是停止逐 k 枚举。优先检查相邻目标行和重复目标计数。" },
+    { author: "SUB-ANALYTIC-A", role: "response", content: "得到一个统一覆盖候选：若坏 residue 同时避开两条相邻目标行，则重复目标计数超过可用容量。", offset: 5 },
+    { author: "MAIN", role: "review", content: "候选送匿名对抗审计；先检查奇偶、合数模数和端点等号。", offset: 7 },
+  ],
+  "kscout": [
+    { author: "MAIN", role: "request", content: "在 L54 冻结余区搜索 k=9,11,13 的 miss tuple。目标是主动证伪统一路线，不是给它背书。" },
+    { author: "SUB-COMPUTE", role: "tool", content: "搜索完成：冻结范围内没有 miss tuple；边界样本已单独保存。", offset: 5 },
+    { author: "SUB-COMPUTE", role: "response", content: "无命中只算旁证。统一结论仍需解析证明和新鲜验缝。", offset: 7 },
+  ],
+  "mixed-r2": [
+    { author: "MAIN", role: "request", content: "你声称 mixed 路线可以覆盖全部 K<m。请把 K=m−1 边界单独展开，并说明为什么仍能调用 2N 极值分类。" },
+    { author: "PRO-MIXED", role: "response", content: "删去两个系数 1 后，剩余序列看起来仍落在四种标准坏型之一，因此我认为分类可以延续。", offset: 5 },
+    { author: "MAIN", role: "review", content: "“看起来”不够。交给独立反证线程核对总长度和四型穷尽。", offset: 7 },
+  ],
+  "mixed-reject": [
+    { author: "MAIN-AUDIT", role: "tool", content: "边界复算：K=m−1 时删去两个系数 1，剩余总长度是 2N−1，不是分类定理要求的 2N。" },
+    { author: "MAIN-AUDIT", role: "review", content: "路线否决。四型穷尽在这个边界没有依据；该结论不得进入证明账。", offset: 4 },
+    { author: "PRO-MIXED", role: "response", content: "接受否决。保留失败记录，撤回“全部 K<m”声明。", offset: 7 },
+  ],
+  "main-final": [
+    { author: "PRO-H2 / PRO-C / PRO-AP", role: "response", content: "P9 三路局部包已经返回：全奇数 H2 合成、真实 G_m 六支撑桥、十五平移打包界。" },
+    { author: "MAIN", role: "review", content: "主审后只接纳各自声明范围。小 k 窗口与 companion 因子谱仍未闭合，Gao 保持 UNRESOLVED。", offset: 6 },
+  ],
+};
+
+function archivedMessagesFor(node: TraceNode) {
+  return archivedChatSeeds[node.id]?.map((message, index) => ({
+    id: `${node.id}-message-${index + 1}`,
+    author: message.author,
+    role: message.role,
+    content: message.content,
+    at: timestamp(node.round, message.offset ?? index * 3),
+  }));
+}
+
 const traceNodes: TraceNode[] = [
   { id: "main-freeze", round: 1, actor: "MAIN", lane: "orchestration", title: "Freeze theorem and evidence boundary", summary: "用户只在这里给出一次研究任务。主实例冻结命题、证据等级和四个隔离执行槽。" },
   { id: "pro1-u132-audit", round: 2, actor: "PRO-1", lane: "integration audit", title: "U132 fresh integration audit", summary: "从零检查 U109/U115/U121 到主定理的蕴含链；首轮发现两处承重缺口。", status: "failed" },
@@ -135,6 +213,7 @@ const evidenceNodes = workThreads.map((thread) => ({
   display_summary: `${thread.proofState}；${thread.verificationState}。${thread.blocker ?? "该工作单元已进入证据账。"}`,
   display_summary_truncated: false,
   display_summary_is_final: true,
+  archived_messages: undefined,
   stream_started_at: thread.times[0]?.at ?? timestamp(thread.workUnit),
   stream_updated_at: timestamp(thread.workUnit, 7),
 }));
@@ -154,6 +233,7 @@ const workflowNodes = [
     display_summary: node.status === "failed" ? `${node.summary}\n\n路线被否决或冻结，不进入正式证明账。` : node.summary,
     display_summary_truncated: false,
     display_summary_is_final: true,
+    archived_messages: archivedMessagesFor(node),
     stream_started_at: timestamp(node.round),
     stream_updated_at: timestamp(node.round, 7),
   })),
